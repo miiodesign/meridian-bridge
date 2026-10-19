@@ -27,10 +27,26 @@
 .button:hover:not(:disabled) { background: #494653; }
 .button:disabled { opacity: 0.5; cursor: not-allowed; }
 .lab-footer { margin-top: 64px; border-top: 1px solid var(--border); padding: 24px 0; }
+.lab-nav { display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; }
+.lab-nav a { text-decoration: none; padding: 8px 0; color: var(--muted); }
+.lab-nav a[aria-current="page"] { color: #5b21b6; box-shadow: 0 2px #5b21b6; }
+.docs-section { display: grid; gap: 18px; padding: 32px 0; border-top: 1px solid var(--border); }
+.docs-section h2 { font-size: 28px; letter-spacing: -0.03em; }
+.docs-section > p { max-width: 760px; color: var(--muted); }
+.docs-section code { overflow-wrap: anywhere; }
+.docs-section pre { margin: 0; padding: 24px; border-radius: 14px; background: #eeece7; overflow-x: auto; line-height: 1.7; font-size: 13px; }
+.docs-section pre code { overflow-wrap: normal; }
+.prop-list { display: grid; gap: 16px; margin: 0; }
+.prop-list dt { font-family: monospace; font-weight: 600; font-size: 14px; }
+.prop-list dd { margin: 6px 0 0; color: var(--muted); line-height: 1.6; }
+.button-demo { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; padding: 24px; border: 1px solid var(--border); border-radius: 14px; }
+.button-demo .button { margin-top: 0; }
+.button-demo p { font-size: 14px; }
+.docs-note { font-size: 14px; }
 
 @media (max-width: 700px) {
   .lab-layout { padding: 0 20px; }
-  .lab-header { padding: 20px 0; }
+  .lab-header { padding: 20px 0; flex-wrap: wrap; }
   .lab-label { display: none; }
   .intro { padding: 56px 0 40px; }
   .palette-card { grid-template-columns: 1fr; }
