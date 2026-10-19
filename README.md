@@ -14,6 +14,12 @@ Built with React, TypeScript, and Vite. Use a Node.js version supported by Vite 
 
 Application code lives in `src/`, and static assets live in `public/`.
 
-## Status
+## Component structure
 
-Includes the Vite React starter, ready for design experiments and prototypes.
+- `src/components/layout/` — page shell and shared layout.
+- `src/components/ui/` — reusable UI primitives, starting with a typed button.
+- `src/components/design/` — design experiments, starting with an interactive palette card.
+- `src/App.tsx` — composes the lab page.
+- `src/index.css` — global styles; `src/App.css` — lab and component styles.
+
+The sample palette card cycles through three color schemes. Color values are shown as text, and palette changes are announced to screen readers.
