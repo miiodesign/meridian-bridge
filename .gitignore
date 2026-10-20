@@ -37,3 +37,8 @@ pnpm-debug.log*
 !.env.sample
 *.pem
 *.key
+
+# Hosting and Supabase local metadata
+.vercel/
+supabase/.temp/
+supabase/.branches/
