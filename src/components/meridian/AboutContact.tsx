@@ -1,7 +1,9 @@
 import { useId, useRef, type ReactNode } from 'react'
 import { Button } from '../ui/Button'
 import { ActionLink, Brand, FeatureGrid, Icon, SectionHeading } from './Shared'
-import { asset, capabilities, questions } from './design'
+import { asset, capabilities, inquiryUrl, questions } from './design'
+import { FounderStory } from './FounderStory'
+import { PrivacyContent, TermsContent } from './LegalContent'
 
 type ContentDialogProps = { title: string; label: string; children: ReactNode; icon?: string }
 
@@ -26,9 +28,9 @@ export function AboutAndQuestions() {
       <div id="faq">
         <SectionHeading eyebrow="We can provide clarity" title="Frequently asked questions" />
         <div className="mb-faq">
-          {questions.map(question => (
+          {questions.map(({ question, answer }) => (
             <details key={question}><summary>{question}<Icon name="ef6bf.svg" /></summary>
-              <p>Ask us about this during your free consultation. Detailed answers will be added once approved by Meridian Bridge.</p>
+              <p>{answer}</p>
             </details>
           ))}
         </div>
@@ -37,7 +39,7 @@ export function AboutAndQuestions() {
         <SectionHeading eyebrow="Based in Canada. Connected to China." title="About Meridian Bridge" />
         <p>Meridian Bridge was founded to help English-speaking clients access high-quality health screening and diagnostic testing in China with more clarity, confidence and support. Based in Canada, we understand both cultures and work closely with trusted providers in Guangdong.</p>
         <ContentDialog title="Gordon, the Founder" label="More on Gordon the Founder" icon="e1e40.svg">
-          <p>The founder’s full biography has not been supplied yet. Book a free consultation to learn more about Meridian Bridge.</p>
+          <FounderStory />
           <ActionLink>Book a Free Consultation</ActionLink>
         </ContentDialog>
         <img src={asset('e15cc.png')} alt="A calm, light-filled consultation room" loading="lazy" />
@@ -54,11 +56,9 @@ export function ContactSection() {
         <p>Book a free 15-minute consultation, or send us what you’re looking for.</p>
         <div className="mb-actions">
           <ActionLink variant="mb-action-inverse">Book a Free Consultation</ActionLink>
-          <ContentDialog title="Send an Inquiry" label="Send an Inquiry" icon="ee954.svg">
-            <p>An inquiry destination has not been configured yet. For now, use the consultation booking link to contact Meridian Bridge.</p>
-            <ActionLink>Book a Free Consultation</ActionLink>
-          </ContentDialog>
+          <ActionLink href={inquiryUrl} variant="mb-action-inverse">Send an Inquiry</ActionLink>
         </div>
+        <p className="mb-inquiry-note">The inquiry form opens on Tally in a new tab. Please do not include medical records or sensitive health information.</p>
       </div>
       <div className="mb-contact-pattern" aria-hidden="true"><img src={asset('5878a.png')} alt="" loading="lazy" /></div>
     </section>
@@ -71,10 +71,10 @@ export function SiteFooter() {
       <div className="mb-footer-main">
         <Brand /><span>www.meridianbridge.ca</span>
         <div className="mb-legal">
-          <ContentDialog title="Privacy" label="Privacy"><p>Privacy policy content is pending. No inquiry form or health-information collection is enabled on this page.</p></ContentDialog>
+          <ContentDialog title="Privacy" label="Privacy"><PrivacyContent /></ContentDialog>
           <span>·</span>
-          <ContentDialog title="Terms" label="Terms"><p>Terms of service are pending. Confirm medical suitability, provider services and costs directly before booking.</p></ContentDialog>
-          <span>·</span><a href="#inquiry">Contact</a>
+          <ContentDialog title="Terms" label="Terms"><TermsContent /></ContentDialog>
+          <span>·</span><a href={inquiryUrl} target="_blank" rel="noopener noreferrer">Contact</a>
         </div>
       </div>
       <FeatureGrid items={capabilities} />

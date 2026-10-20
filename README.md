@@ -26,7 +26,7 @@ The sample palette card cycles through three color schemes. Color values are sho
 
 ## Component documentation
 
-Start `npm run dev`, open the URL printed by Vite, and choose **Documentation** in the header. The documentation route is `#/docs`; the lab route is `#/`. The page includes API guidance, usage examples, and interactive Button and PaletteCard demos.
+Start `npm run dev` and open the URL printed by Vite. Meridian Bridge is the homepage; the documentation route is `#/docs` and the lab route is `#/lab`. The documentation page includes API guidance, usage examples, and interactive Button and PaletteCard demos.
 
 Hash-based navigation supports direct links, browser history, and refreshes on static hosting without server rewrites. Local development and Vercel use `/`; the GitHub Pages workflow builds with `/miio-design-lab/`.
 
@@ -69,3 +69,13 @@ The production alias and its assets were verified accessible without authenticat
 The two browser-safe Supabase variables are configured for Vercel production, preview, and development. They are embedded in frontend builds and must never contain privileged credentials. GitHub Pages currently renders the component lab without backend configuration.
 
 Deploy manually from the project directory with `vercel --prod`. The attempted automatic GitHub connection did not succeed, so pushes do not currently trigger Vercel deployments. To enable that later, connect the repository under the Vercel project's Git settings and grant the Vercel GitHub app access. GitHub Pages automatic deployment is separate and remains enabled.
+
+## Meridian Bridge inquiries and content
+
+Both “Send an Inquiry” buttons and the footer Contact link open the owner-supplied Tally form at https://tally.so/r/7Rpe72. The shared URL lives in `src/components/meridian/design.ts`. This direct-link integration works on Vercel and static GitHub Pages without website API keys or a custom backend.
+
+Tally manages submissions. This repository does not configure Tally notifications, forwarding, storage retention, or a Supabase sync. Those integrations must be configured and tested separately in the form owner's account. Do not interpret a reachable form as proof of successful notification delivery. Do not send test inquiries without authorization.
+
+Gordon's supplied biography and portrait are displayed in the founder dialog. FAQs describe coordination without promising specific medical outcomes or report deadlines. The pricing card is an illustrative breakdown, not an interactive estimator; CAD and USD costs are not combined into an unsupported total.
+
+Privacy and Terms dialogs contain explicitly labeled drafts for owner review. Before publishing these changes to production, confirm the legal copy, business/privacy contact, data retention, and actual Tally integrations. No claims of regulatory compliance or specific data residency are made.

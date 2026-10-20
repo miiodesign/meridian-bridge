@@ -1,17 +1,52 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Button } from '../ui/Button'
 import { ActionLink, Brand, Icon } from './Shared'
-import { asset, capabilities, consultationUrl, navigation } from './design'
+import { asset, capabilities, consultationUrl, inquiryUrl, navigation } from './design'
 
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const headerRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    if (!menuOpen) return
+
+    function closeOnEscape(event: KeyboardEvent) {
+      if (event.key !== 'Escape') return
+      setMenuOpen(false)
+      headerRef.current?.querySelector<HTMLButtonElement>('.mb-menu-toggle')?.focus()
+    }
+    function closeOutside(event: PointerEvent) {
+      if (event.target instanceof Node && !headerRef.current?.contains(event.target)) setMenuOpen(false)
+    }
+    const desktop = window.matchMedia('(min-width: 1051px)')
+    function closeOnDesktop() {
+      if (desktop.matches) setMenuOpen(false)
+    }
+
+    document.addEventListener('keydown', closeOnEscape)
+    document.addEventListener('pointerdown', closeOutside)
+    desktop.addEventListener('change', closeOnDesktop)
+    return () => {
+      document.removeEventListener('keydown', closeOnEscape)
+      document.removeEventListener('pointerdown', closeOutside)
+      desktop.removeEventListener('change', closeOnDesktop)
+    }
+  }, [menuOpen])
   return (
-    <header className="mb-header">
+    <header className="mb-header" ref={headerRef}>
       <Brand />
       <Button className="mb-menu-toggle" aria-expanded={menuOpen} aria-controls="meridian-nav"
-        onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? 'Close menu' : 'Menu'}</Button>
+        aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+        onClick={() => setMenuOpen(open => !open)}>
+        <span>{menuOpen ? 'Close' : 'Menu'}</span>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d={menuOpen ? 'M5 5L15 15M15 5L5 15' : 'M3 5H17M3 10H17M3 15H17'} stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        </svg>
+      </Button>
       <nav id="meridian-nav" className={menuOpen ? 'is-open' : ''} aria-label="Meridian Bridge navigation">
         {navigation.map(([label, id]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>{label}</a>)}
+        <a className="mb-mobile-consultation" href={consultationUrl} target="_blank" rel="noopener noreferrer"
+          onClick={() => setMenuOpen(false)}>Book a Free Consultation <span aria-hidden="true">↗</span></a>
       </nav>
       <a className="mb-header-cta" href={consultationUrl} target="_blank" rel="noopener noreferrer">Book a Free 15min Consultation</a>
     </header>
@@ -35,7 +70,7 @@ export function Hero() {
           <p>Access comprehensive health screenings and diagnostic testing in China, with Meridian Bridge handling the coordination from Canada.</p>
           <div className="mb-actions">
             <ActionLink>Book a Free 15 min Consultation</ActionLink>
-            <ActionLink href="#inquiry" variant="mb-action-light" icon="8e1e6.svg">Send an Inquiry</ActionLink>
+            <ActionLink href={inquiryUrl} variant="mb-action-light" icon="8e1e6.svg">Send an Inquiry</ActionLink>
           </div>
         </div>
       </section>
