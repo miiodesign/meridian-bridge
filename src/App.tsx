@@ -2,6 +2,7 @@ import { useSyncExternalStore } from 'react'
 import { LabLayout } from './components/layout/LabLayout'
 import { PaletteCard } from './components/design/PaletteCard'
 import { DocumentationPage } from './pages/DocumentationPage'
+import { MeridianBridgePage } from './pages/MeridianBridgePage'
 import './App.css'
 function subscribeToHash(callback: () => void) {
   window.addEventListener('hashchange', callback)
@@ -10,6 +11,7 @@ function subscribeToHash(callback: () => void) {
 
 function App() {
   const hash = useSyncExternalStore(subscribeToHash, () => window.location.hash, () => '#/')
+  if (hash !== '#/lab' && hash !== '#/docs') return <MeridianBridgePage />
   const page = hash === '#/docs' ? 'docs' : 'lab'
   return (
     <LabLayout page={page}>

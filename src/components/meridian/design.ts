@@ -1,0 +1,65 @@
+export const asset = (name: string) => `${import.meta.env.BASE_URL}meridian/${name}`
+export const consultationUrl = 'https://calendly.com/gordon-meridianbridge/15min-consultation'
+
+export const navigation = [
+  ['Why China', 'why-china'],
+  ['How it Works', 'how-it-works'],
+  ["What's Included", 'screening'],
+  ['Pricing', 'pricing'],
+  ['Our Providers', 'providers'],
+  ['About', 'about'],
+  ['FAQ', 'faq'],
+] as const
+
+export const capabilities = [
+  ['c2f85.svg', 'International departments', 'Dedicated services for foreign patients'],
+  ['c8978.svg', 'Modern equipment', 'Western-standard MRI, CT, ultrasound and diagnostic systems'],
+  ['1c73b.svg', 'Proven experience', 'Decades of care for international visitors'],
+] as const
+
+export const comparisons = [
+  { title: 'MRI (private) *', icon: 'fa59d.svg', image: '3f753.png', wait: '8 – 18 weeks', cost: '$400 – $1,200 CAD' },
+  { title: 'CT Scan (private) *', icon: 'fa59d.svg', image: '119e9.png', wait: '4 – 12 weeks', cost: '$300 – $800 CAD' },
+  { title: 'Complete Health Screening', icon: '2d269.svg', image: '30d0f.png', wait: 'Limited availability', cost: '$2,500 – $5,000+ CAD' },
+] as const
+
+export const processSteps = [
+  ['02', 'bacba.svg', 'Receive tailored options', 'We identify suitable providers and packages based on your needs.'],
+  ['03', '3527e.svg', 'We coordinate the booking', 'We handle communication with the provider and appointment details.'],
+  ['04', '76561.svg', 'We prepare you for China', 'Practical guidance, payment preparation and on-trip support.'],
+  ['05', 'e3ac5.svg', 'Receive your results', 'We help with report logistics and guidance for your own physician.'],
+] as const
+
+export const screeningTests = [
+  ['3a216.svg', 'Physical health assessment & body composition'],
+  ['8ab5d.svg', 'Vision and eye examination'],
+  ['ac093.svg', 'ECG and cardiovascular testing'],
+  ['074ae.svg', 'X-ray, CT, MRI and ultrasound'],
+  ['5d8b0.svg', 'Gastrointestinal screening'],
+  ['d8181.svg', 'Tumour markers'],
+  ['a7c4c.svg', 'Bone density'],
+  ['e6860.svg', 'Female health specific tests'],
+  ['6395f.svg', 'Thyroid, liver and kidney function'],
+  ['e3fa5.svg', 'Other package-specific tests'],
+  ['3bb3d.svg', 'Blood testing, diabetes screening'],
+] as const
+
+export const providers = [
+  ['94db4.png', 'Major academic hospitals', 'Clinically renowned institutions with broad diagnostic and specialist capabilities.'],
+  ['a8e95.png', 'International & private hospitals', 'High-quality service and dedicated international patient departments.'],
+  ['770de.png', 'Specialist diagnostic providers', 'Focused on comprehensive screening and diagnostic services with specific strengths.'],
+] as const
+
+export const expectations = [
+  ['13c26.svg', 'Western-standard equipment', 'Modern MRI, CT, ultrasound and diagnostic systems.'],
+  ['1c73b.svg', 'Dedicated international departments', 'VIP and foreign-patient services.'],
+  ['ba4f6.svg', 'Experienced teams', 'Decades of experience serving international patients.'],
+  ['3ff93.svg', 'Streamlined patient journey', 'Registration, interpretation, imaging access and follow-up support.'],
+] as const
+
+export const questions = [
+  'Can you help if I only want an MRI or specific test?',
+  'How do you choose which provider to recommend?',
+  'Will the hospitals speak English?',
+  'How and when will I receive my results?',
+] as const
