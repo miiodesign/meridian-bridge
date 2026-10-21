@@ -1,6 +1,7 @@
 .meridian {
   --mb-gutter: max(32px, calc((100vw - 1280px) / 2));
   --mb-rule: 1px solid var(--mb-sand);
+  --mb-pattern-opacity: .035;
 }
 .meridian p { line-height: 1.65; }
 .meridian h2 { font-size: clamp(40px, 4vw, 62px); line-height: 1.06; letter-spacing: -.025em; text-wrap: balance; }
@@ -13,10 +14,13 @@
 .meridian :is(a, button, summary):focus-visible { outline: 2px solid var(--mb-gold); outline-offset: 5px; }
 
 .meridian .mb-header { min-height: 92px; padding: 20px var(--mb-gutter); gap: 28px; background: var(--mb-ivory); border-bottom: var(--mb-rule); }
-.meridian .mb-header nav { background: transparent; border-radius: 0; padding: 0; gap: 22px; font-size: 13px; }
-.meridian .mb-header nav a { position: relative; padding: 10px 0; text-decoration: none; }
+.meridian .mb-header nav { background: transparent; border-radius: 0; padding: 0; gap: 4px; font-size: 13px; }
+.meridian .mb-header nav a { position: relative; padding: 10px; text-decoration: none; }
 .meridian .mb-header nav a::after { position: absolute; content: ''; height: 1px; background: currentColor; bottom: 5px; left: 0; right: 0; transform: scaleX(0); transform-origin: left; }
 .meridian .mb-header nav a:is(:hover, :focus-visible)::after { transform: scaleX(1); }
+.meridian .mb-header nav a[aria-current="location"] { background: var(--mb-evergreen); color: var(--mb-paper); }
+.meridian .mb-header nav a[aria-current="location"]:is(:hover, :focus-visible) { background: var(--mb-jade); color: var(--mb-paper); }
+.meridian .mb-header nav a[aria-current="location"]::after { display: none; }
 .meridian .mb-header-cta { border: 1px solid var(--mb-evergreen); border-radius: 0; background: transparent; color: var(--mb-evergreen); padding: 15px 18px; font-size: 13px; font-weight: 600; }
 .meridian .mb-header-cta:is(:hover, :focus-visible) { background: var(--mb-evergreen); color: var(--mb-paper); }
 .meridian .mb-brand { position: relative; }
@@ -24,16 +28,16 @@
 .meridian .mb-brand:is(:hover, :focus-visible)::after { transform: scaleX(1); }
 .meridian .mb-menu-toggle.button:is(:hover, :focus-visible) { background: var(--mb-sand); color: var(--mb-evergreen); }
 
-.meridian .mb-hero { background: var(--mb-paper); min-height: 0; display: grid; grid-template-columns: 1fr; }
-.meridian .mb-hero-image { position: relative; grid-column: 1; grid-row: 1; left: auto; top: auto; bottom: auto; width: 100%; height: clamp(280px, 31vw, 500px); object-fit: cover; object-position: center; }
-.meridian .mb-hero::after { display: none; }
-.meridian .mb-hero-copy { grid-column: 1; grid-row: 2; padding: 64px var(--mb-gutter); display: grid; grid-template-columns: 1.1fr 1fr; align-content: start; align-items: start; gap: 22px 100px; width: 100%; }
-.meridian .mb-hero-copy > .mb-eyebrow { grid-column: 1; grid-row: 1; max-width: 380px; }
-.meridian .mb-hero-copy > h1 { grid-column: 1; grid-row: 2 / 4; }
+.meridian .mb-hero { position: relative; isolation: isolate; background: var(--mb-paper); min-height: 720px; display: grid; grid-template-columns: 1fr; }
+.meridian .mb-hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.meridian .mb-hero::after { display: block; position: absolute; content: ''; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; background: linear-gradient(90deg, color-mix(in srgb, var(--mb-paper) 99%, transparent) 0%, color-mix(in srgb, var(--mb-paper) 96%, transparent) 24%, color-mix(in srgb, var(--mb-paper) 82%, transparent) 40%, color-mix(in srgb, var(--mb-paper) 30%, transparent) 58%, transparent 78%); }
+.meridian .mb-hero-copy { position: relative; z-index: 1; grid-column: 1; grid-row: 1; padding: 64px var(--mb-gutter); display: grid; grid-template-columns: minmax(0, 520px); align-content: center; align-items: start; gap: 24px; width: 100%; }
+.meridian .mb-hero-copy > .mb-eyebrow { grid-column: 1; grid-row: auto; max-width: 380px; }
+.meridian .mb-hero-copy > h1 { grid-column: 1; grid-row: auto; }
 .meridian .mb-hero h1 { font-size: clamp(58px, 5.6vw, 84px); line-height: 1.01; letter-spacing: -.035em; }
 .meridian .mb-hero h1 em { font-weight: 600; }
-.meridian .mb-hero-copy > p:not(.mb-eyebrow) { grid-column: 2; grid-row: 1 / 3; align-self: end; font-size: 17px; color: var(--mb-muted); max-width: 350px; }
-.meridian .mb-hero .mb-actions { grid-column: 2; grid-row: 3; display: grid; gap: 10px; width: min(100%, 350px); }
+.meridian .mb-hero-copy > p:not(.mb-eyebrow) { grid-column: 1; grid-row: auto; font-size: 17px; color: var(--mb-ink); max-width: 390px; }
+.meridian .mb-hero .mb-actions { grid-column: 1; grid-row: auto; display: grid; gap: 10px; width: min(100%, 350px); }
 .meridian .mb-hero .mb-action { min-width: 0; width: 100%; font-size: 14px; }
 .meridian .mb-action { min-height: 56px; padding: 15px 22px; justify-content: space-between; gap: 22px; border-radius: 0; font-size: 15px; line-height: 1.4; border-color: var(--mb-evergreen); filter: none; }
 .meridian .mb-action:is(:hover, :focus-visible) { background: var(--mb-ink); filter: none; }
@@ -50,7 +54,7 @@
 .meridian .mb-trust > div { font: 500 19px/1.35 var(--mb-serif); align-items: center; gap: 12px; }
 .meridian .mb-trust .mb-icon { width: auto; height: auto; }
 .meridian .mb-patient-context { position: relative; isolation: isolate; overflow: hidden; grid-template-columns: 1fr 1fr; align-items: center; gap: 88px; padding: 64px var(--mb-gutter); min-height: 0; background: var(--mb-evergreen); }
-.meridian .mb-brand-pattern { position: absolute; inset: 0; z-index: -1; background-repeat: repeat; background-size: 680px 680px; background-position: center; opacity: .13; pointer-events: none; }
+.meridian .mb-brand-pattern { position: absolute; inset: 0; z-index: -1; background-repeat: no-repeat; background-size: cover; background-position: center; opacity: var(--mb-pattern-opacity); pointer-events: none; }
 .meridian .mb-patient-context > .mb-context-divider { display: none; }
 .meridian .mb-patient-context > div:not(.mb-brand-pattern) { position: relative; }
 .meridian .mb-metrics { gap: 32px; grid-template-columns: 1.3fr 1fr; }
@@ -61,7 +65,7 @@
 .meridian .mb-context-features h3 { font-size: 15px; font-weight: 600; }
 .meridian .mb-context-features p { font-size: 14px; color: var(--mb-ivory); }
 
-.meridian .mb-why { background: var(--mb-paper); }
+.meridian .mb-why { background: var(--mb-ivory); }
 .meridian .mb-comparisons { margin: 52px 0 0; gap: 32px; }
 .meridian .mb-comparisons h3 { font-weight: 500; font-size: 26px; margin-bottom: 20px; align-items: start; }
 .meridian .mb-comparison-body { grid-template-columns: 1fr 1fr; border-radius: 0; }
@@ -70,22 +74,24 @@
 .meridian .mb-comparison-0 .mb-comparison-image img,
 .meridian .mb-comparison-1 .mb-comparison-image img,
 .meridian .mb-comparison-2 .mb-comparison-image img { width: 100%; height: 100%; left: 0; top: 0; object-fit: cover; object-position: center; }
-.meridian .mb-country { padding: 20px; font-size: 14px; }
+.meridian .mb-country { padding: 20px; font-size: 14px; background: var(--mb-pale); }
+.meridian .mb-country-canada { background: var(--mb-sand); }
 .meridian .mb-country > strong { font-size: 11px; letter-spacing: .08em; margin-bottom: 20px; }
 .meridian .mb-country .mb-country-label { font-size: 10px; letter-spacing: .08em; }
 .meridian .mb-footnote { margin: 24px 0 0; max-width: 760px; font-size: 12px; }
-.meridian .mb-process { background: var(--mb-ivory); }
-.meridian .mb-steps { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 26px; margin-top: 52px; }
-.meridian .mb-steps article { border-top: var(--mb-rule); padding-top: 24px; }
-.meridian .mb-steps article > span { color: var(--mb-jade); font-size: 25px; }
-.meridian .mb-steps h3 { font-size: 16px; line-height: 1.4; font-weight: 600; }
-.meridian .mb-steps p { font-size: 15px; }
+.meridian .mb-process { background: var(--mb-paper); }
+.meridian .mb-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 32px; margin-top: 52px; }
+.meridian .mb-steps article { display: grid; grid-template-columns: 90px minmax(0, 1fr); align-items: start; gap: 16px; border-top: var(--mb-rule); padding: 24px 0 0; }
+.meridian .mb-steps article > .mb-step-number { position: static; color: var(--mb-ivory); font: 400 88px/.95 var(--mb-serif); margin: 0; letter-spacing: -.04em; }
+.meridian .mb-step-copy { padding-top: 4px; }
+.meridian .mb-steps h3 { font-size: 18px; line-height: 1.3; font-weight: 600; margin-bottom: 12px; }
+.meridian .mb-steps p { font-size: 16px; }
 .meridian .mb-travel { margin-top: 64px; border-radius: 0; box-shadow: none; grid-template-columns: 1fr 1fr; }
 .meridian .mb-travel > div { padding: 52px; gap: 22px; align-content: center; }
 .meridian .mb-travel h2 { font-size: clamp(34px, 3vw, 46px); }
 .meridian .mb-travel p { font-size: 16px; max-width: 440px; }
 .meridian .mb-travel .mb-travel-subtitle { font-size: 20px; }
-.meridian .mb-travel > img { min-height: 380px; object-position: center; }
+.meridian .mb-travel > img { min-height: 380px; object-position: center; mask-image: linear-gradient(90deg, transparent 0%, var(--mb-ink) 28%); }
 .meridian .mb-travel .mb-action { margin-top: 8px; }
 
 .meridian .mb-screening { display: grid; grid-template-columns: .85fr 1.15fr; gap: 80px; background: var(--mb-pale); align-items: start; }
@@ -95,10 +101,13 @@
 .meridian .mb-screening-card > p { max-width: 430px; font-size: 16px; }
 .meridian .mb-screening-card ul { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; margin-top: 32px; }
 .meridian .mb-screening-card li { padding: 18px 0; border-top: var(--mb-rule); font-size: 15px; gap: 12px; }
-.meridian .mb-pricing { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: 120px; align-items: start; background: var(--mb-evergreen); }
+.meridian .mb-pricing { display: grid; grid-template-columns: minmax(250px, .85fr) minmax(0, 2fr); gap: 48px; align-items: start; background: var(--mb-evergreen); }
+.meridian .mb-pricing-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 28px; }
 .meridian .mb-pricing .mb-section-heading { position: sticky; top: 128px; max-width: 460px; }
-.meridian .mb-pricing-card { border-radius: 0; padding: 32px; background: var(--mb-paper); }
-.meridian .mb-pricing-card h3 { font-size: 32px; }
+.meridian .mb-pricing-card { border-radius: 0; padding: 28px; background: var(--mb-paper); min-width: 0; }
+.meridian .mb-pricing-card h3 { font-size: 28px; }
+.meridian .mb-pricing-subtitle { margin-top: 8px; color: var(--mb-muted); font-size: 15px; }
+.meridian .mb-pricing-card[data-scenario="already-going"] .mb-total { margin-top: 24px; }
 .meridian .mb-pricing-card h3 br { display: none; }
 .meridian .mb-fee-toggle.button { min-height: 44px; padding: 12px; font-size: 12px; border-radius: 0; }
 .meridian .mb-facilitation-panel, .meridian .mb-total { border-radius: 0; }
@@ -133,7 +142,7 @@
 .meridian .mb-legal-content a:is(:hover, :focus-visible) { text-decoration-thickness: 2px; color: var(--mb-jade); }
 
 .meridian .mb-footer { position: relative; isolation: isolate; overflow: hidden; background: var(--mb-evergreen); color: var(--mb-ivory); }
-.meridian .mb-footer > .mb-brand-pattern { opacity: .18; background-size: 680px 680px; background-position: right top; }
+.meridian .mb-footer > .mb-brand-pattern { opacity: var(--mb-pattern-opacity); background-size: cover; background-position: center; }
 .meridian .mb-footer > :not(.mb-brand-pattern) { position: relative; z-index: 1; }
 .meridian .mb-contact { padding: 96px var(--mb-gutter) 80px; min-height: 0; background: transparent; }
 .meridian .mb-contact-copy { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px 100px; align-items: start; }
@@ -163,25 +172,28 @@
 
 @media (max-width: 1250px) {
   .meridian .mb-header { gap: 20px; }
-  .meridian .mb-header nav { gap: 15px; }
+  .meridian .mb-header nav { gap: 0; }
+  .meridian .mb-header nav a { padding: 10px 8px; }
   .meridian .mb-header-cta { font-size: 12px; padding: 14px; }
   .meridian .mb-hero-copy { column-gap: 64px; }
   .meridian .mb-patient-context { gap: 44px; }
   .meridian .mb-context-features { padding-left: 28px; gap: 20px; grid-template-columns: 1fr; }
   .meridian .mb-context-features article { display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; }
   .meridian .mb-context-features h3 { margin: 0; }
-  .meridian .mb-screening, .meridian .mb-pricing { gap: 56px; }
+  .meridian .mb-screening { gap: 56px; }
+  .meridian .mb-pricing { grid-template-columns: 1fr; gap: 40px; }
+  .meridian .mb-pricing .mb-section-heading { position: static; max-width: 760px; }
   .meridian .mb-footer-main { gap: 48px; }
 }
 @media (max-width: 1050px) {
   .meridian .mb-header { min-height: 88px; }
   .meridian .mb-header nav { padding: 12px 32px 24px; background: var(--mb-paper); gap: 0; }
-  .meridian .mb-header nav a { padding: 16px 0; }
+  .meridian .mb-header nav a { padding: 16px 12px; }
   .meridian .mb-header nav a::after { right: auto; width: 40px; bottom: 10px; }
   .meridian .mb-header nav .mb-mobile-consultation { border-radius: 0; padding: 16px 20px; }
   .meridian .mb-header nav .mb-mobile-consultation::after { display: none; }
   .meridian .mb-header nav .mb-mobile-consultation:is(:hover, :focus-visible) { background: var(--mb-ink); color: var(--mb-paper); }
-  .meridian .mb-hero { grid-template-columns: 1fr; min-height: 0; }
+  .meridian .mb-hero { grid-template-columns: 1fr; min-height: 680px; }
   .meridian .mb-hero-image { left: auto; width: 100%; }
   .meridian .mb-hero h1 { font-size: clamp(50px, 6.5vw, 68px); }
   .meridian .mb-hero-copy { padding: 48px var(--mb-gutter); column-gap: 40px; }
@@ -189,12 +201,12 @@
   .meridian .mb-comparisons { gap: 20px; }
   .meridian .mb-comparisons h3 { font-size: 23px; }
   .meridian .mb-country { padding: 16px 12px; font-size: 13px; }
-  .meridian .mb-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+  .meridian .mb-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
   .meridian .mb-travel > div { padding: 32px; }
   .meridian .mb-screening { grid-template-columns: 1fr 1.2fr; gap: 40px; }
   .meridian .mb-screening-card { padding-left: 28px; }
   .meridian .mb-screening-card ul { grid-template-columns: 1fr; }
-  .meridian .mb-pricing { grid-template-columns: minmax(0, 1fr) 353px; gap: 40px; }
+  .meridian .mb-pricing { grid-template-columns: 1fr; gap: 40px; }
   .meridian .mb-pricing-card { padding: 28px; }
   .meridian .mb-provider-cards { gap: 24px; }
   .meridian .mb-provider-cards article > img { height: 220px; }
@@ -213,7 +225,7 @@
   .meridian .mb-header nav { padding-right: 24px; padding-left: 24px; }
   .meridian .mb-menu-toggle.button { border-radius: 0; }
   .meridian .mb-hero { grid-template-columns: 1fr; min-height: 0; }
-  .meridian .mb-hero-copy { grid-row: 2; grid-template-columns: 1fr; padding: 40px var(--mb-gutter); gap: 24px; }
+  .meridian .mb-hero-copy { grid-row: 1; grid-template-columns: 1fr; padding: 48px var(--mb-gutter) 64px; gap: 24px; }
   .meridian .mb-hero-copy > .mb-eyebrow,
   .meridian .mb-hero-copy > h1,
   .meridian .mb-hero-copy > p:not(.mb-eyebrow),
@@ -222,7 +234,8 @@
   .meridian .mb-hero-copy > p:not(.mb-eyebrow) { max-width: 400px; }
   .meridian .mb-hero .mb-actions { display: flex; flex-wrap: wrap; width: 100%; max-width: 500px; }
   .meridian .mb-hero .mb-action { flex: 1 1 260px; font-size: 14px; }
-  .meridian .mb-hero-image { position: relative; grid-row: 1; left: auto; top: auto; width: 100%; height: clamp(200px, 45vw, 330px); object-position: center; }
+  .meridian .mb-hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-position: 57% center; }
+  .meridian .mb-hero::after { background: linear-gradient(90deg, color-mix(in srgb, var(--mb-paper) 98%, transparent) 0%, color-mix(in srgb, var(--mb-paper) 93%, transparent) 45%, color-mix(in srgb, var(--mb-paper) 72%, transparent) 78%, color-mix(in srgb, var(--mb-paper) 35%, transparent) 100%); }
   .meridian .mb-trust { padding: 28px 24px; gap: 24px 20px; }
   .meridian .mb-trust > div { font-size: 17px; align-items: start; }
   .meridian .mb-patient-context { padding: 48px 24px; gap: 36px; grid-template-columns: 1fr; }
@@ -235,17 +248,17 @@
   .meridian .mb-comparison-image { height: 220px; }
   .meridian .mb-country { padding: 20px; font-size: 14px; }
   .meridian .mb-steps { grid-template-columns: 1fr; margin-top: 36px; gap: 0; }
-  .meridian .mb-steps article { padding: 24px 0 24px 52px; border-top: var(--mb-rule); border-bottom: 0; position: relative; }
-  .meridian .mb-steps article > span { position: absolute; left: 0; top: 22px; }
-  .meridian .mb-steps article > .mb-icon { margin-bottom: 12px; }
+  .meridian .mb-steps article { grid-template-columns: 88px minmax(0, 1fr); padding: 24px 0; border-top: var(--mb-rule); border-bottom: 0; }
+  .meridian .mb-steps article > .mb-step-number { position: static; font-size: 88px; }
   .meridian .mb-travel { grid-template-columns: 1fr; margin-top: 36px; }
   .meridian .mb-travel > div { padding: 32px 28px; }
-  .meridian .mb-travel > img { height: 280px; min-height: 0; }
+  .meridian .mb-travel > img { height: 280px; min-height: 0; mask-image: linear-gradient(180deg, transparent 0%, var(--mb-ink) 35%); }
   .meridian .mb-screening, .meridian .mb-pricing { grid-template-columns: 1fr; gap: 36px; }
   .meridian .mb-screening .mb-section-heading, .meridian .mb-pricing .mb-section-heading { position: static; }
   .meridian .mb-screening-card { padding: 28px 0 0; border-left: 0; border-top: var(--mb-rule); }
   .meridian .mb-screening-card ul { grid-template-columns: 1fr 1fr; gap: 0 20px; }
   .meridian .mb-screening-card li { font-size: 14px; }
+  .meridian .mb-pricing-cards { grid-template-columns: 1fr; gap: 28px; }
   .meridian .mb-pricing-card { padding: 28px; width: 100%; max-width: 460px; }
   .meridian .mb-provider-cards { grid-template-columns: 1fr; margin-top: 36px; gap: 24px; }
   .meridian .mb-provider-cards article > img { height: 280px; }
@@ -264,11 +277,11 @@
   .meridian .mb-footer-introduction { grid-row: auto; }
   .meridian .mb-footer-navigation { grid-column: auto; }
   .meridian .mb-footer-bottom { margin: 0 24px; padding: 24px 0; align-items: start; flex-direction: column; gap: 12px; }
-  .meridian .mb-footer .mb-brand-pattern { background-size: 560px 560px; opacity: .15; }
+  .meridian .mb-footer .mb-brand-pattern { background-size: cover; opacity: var(--mb-pattern-opacity); }
 }
 @media (max-width: 400px) {
   .meridian { --mb-gutter: 20px; }
-  .meridian .mb-hero-image { height: 200px; }
+  .meridian .mb-hero-image { height: 100%; }
   .meridian .mb-trust { grid-template-columns: 1fr; }
   .meridian .mb-metrics { grid-template-columns: 1fr; gap: 28px; }
   .meridian .mb-context-features article { grid-template-columns: 1fr; gap: 4px; }

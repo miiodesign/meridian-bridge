@@ -3,10 +3,12 @@ import { Button } from '../ui/Button'
 import { ActionLink, Brand, Icon } from './Shared'
 import { asset, capabilities, consultationUrl, inquiryUrl, navigation } from './design'
 import { BrandPattern } from './BrandPattern'
+import { useActiveSection } from './useActiveSection'
 
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false)
   const headerRef = useRef<HTMLElement>(null)
+  const [activeSection, selectSection] = useActiveSection(headerRef)
 
   useEffect(() => {
     if (!menuOpen) return
@@ -45,7 +47,10 @@ export function SiteHeader() {
         </svg>
       </Button>
       <nav id="meridian-nav" className={menuOpen ? 'is-open' : ''} aria-label="Meridian Bridge navigation">
-        {navigation.map(([label, id]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>{label}</a>)}
+        {navigation.map(([label, id]) => (
+          <a key={id} href={`#${id}`} aria-current={activeSection === id ? 'location' : undefined}
+            onClick={() => { selectSection(id); setMenuOpen(false) }}>{label}</a>
+        ))}
         <a className="mb-mobile-consultation" href={consultationUrl} target="_blank" rel="noopener noreferrer"
           onClick={() => setMenuOpen(false)}>Book a Free Consultation <span aria-hidden="true">↗</span></a>
       </nav>
