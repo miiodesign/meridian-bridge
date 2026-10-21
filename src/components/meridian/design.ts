@@ -1,6 +1,7 @@
 export const asset = (name: string) => `${import.meta.env.BASE_URL}meridian/${name}`
 export const consultationUrl = 'https://calendly.com/gordon-meridianbridge/15min-consultation'
 export const inquiryUrl = 'https://tally.so/r/7Rpe72'
+export const siteUrl = 'https://meridianbridge.vercel.app/'
 
 export const navigation = [
   ['Why China', 'why-china'],
@@ -25,6 +26,7 @@ export const comparisons = [
 ] as const
 
 export const processSteps = [
+  ['01', '1c73b.svg', 'Start with a conversation', 'Tell us what you are looking for during a free consultation or through our inquiry form.'],
   ['02', 'bacba.svg', 'Receive tailored options', 'We identify suitable providers and packages based on your needs.'],
   ['03', '3527e.svg', 'We coordinate the booking', 'We handle communication with the provider and appointment details.'],
   ['04', '76561.svg', 'We prepare you for China', 'Practical guidance, payment preparation and on-trip support.'],

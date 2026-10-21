@@ -1,6 +1,6 @@
-# Miio Design Lab
+# Meridian Bridge
 
-A workspace for design experiments and prototypes.
+A Canadian-led health screening and diagnostic coordination website, built with React, TypeScript, and Vite.
 
 ## Development
 
@@ -19,7 +19,8 @@ Application code lives in `src/`, and static assets live in `public/`.
 - `src/components/layout/` — page shell and shared layout.
 - `src/components/ui/` — reusable UI primitives, starting with a typed button.
 - `src/components/design/` — design experiments, starting with an interactive palette card.
-- `src/App.tsx` — composes the lab page.
+- `src/components/meridian/` — Meridian Bridge page sections, founder story, and shared content.
+- `src/App.tsx` — routes the Meridian Bridge homepage, component lab, and documentation.
 - `src/index.css` — global styles; `src/App.css` — lab and component styles.
 
 The sample palette card cycles through three color schemes. Color values are shown as text, and palette changes are announced to screen readers.
@@ -28,11 +29,13 @@ The sample palette card cycles through three color schemes. Color values are sho
 
 Start `npm run dev` and open the URL printed by Vite. Meridian Bridge is the homepage; the documentation route is `#/docs` and the lab route is `#/lab`. The documentation page includes API guidance, usage examples, and interactive Button and PaletteCard demos.
 
-Hash-based navigation supports direct links, browser history, and refreshes on static hosting without server rewrites. Local development and Vercel use `/`; the GitHub Pages workflow builds with `/miio-design-lab/`.
+Hash-based navigation supports direct links, browser history, and refreshes on static hosting without server rewrites. Local development and Vercel use `/`; the GitHub Pages workflow builds with `/meridian-bridge/`.
 
 ## GitHub Pages
 
-The public repository is deployed at https://miiodesign.github.io/miio-design-lab/ with documentation at https://miiodesign.github.io/miio-design-lab/#/docs.
+Repository: https://github.com/miiodesign/meridian-bridge.
+
+The GitHub Pages URL after publishing the renamed repository is https://miiodesign.github.io/meridian-bridge/, with documentation at https://miiodesign.github.io/meridian-bridge/#/docs.
 
 The workflow in `.github/workflows/deploy.yml` runs lint and a production build on pushes to `main` and manual runs. The repository variable `PAGES_ENABLED` is set to `true`.
 
@@ -48,7 +51,7 @@ Pages sites are normally publicly accessible even when the source repository is 
 
 ## Supabase
 
-The local Supabase CLI is linked to the existing `miiodesign's Project` in the `miio design lab` organization. Configuration is in `supabase/config.toml`; linking metadata in `supabase/.temp/` is ignored. No schema, data, or authentication settings were changed during setup.
+The local Supabase configuration uses the project identifier `meridian-bridge` and remains linked to the same hosted project (`bgadwxohsekhxmrolnsg`). Configuration is in `supabase/config.toml`; linking metadata in `supabase/.temp/` is ignored. The hosted database reference and account/organization identifiers are infrastructure identifiers, not public branding. No schema, data, or authentication settings were changed by the rename.
 
 For a new checkout, copy `.env.example` to `.env.local`, then set `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` using the project's browser-safe publishable key (a legacy anon key is also supported). Restart Vite after changing these values.
 
@@ -58,17 +61,17 @@ Link a new local checkout with `supabase link --project-ref bgadwxohsekhxmrolnsg
 
 ## Vercel
 
-The app is linked locally to the `miio-design-lab` project in the `miio-design-lab` Hobby team. `vercel.json` specifies the Vite build and `dist` output. `.vercel/` is ignored.
+The app is linked locally to the `meridian-bridge` project in the existing owner’s Vercel team. `vercel.json` specifies the Vite build and `dist` output. `.vercel/` is ignored. Project and environment settings are preserved; account/team identifiers are unchanged.
 
-Production: https://miio-design-lab.vercel.app/
+Production: https://meridianbridge.vercel.app/
 
-Documentation: https://miio-design-lab.vercel.app/#/docs
+Documentation: https://meridianbridge.vercel.app/#/docs
 
 The production alias and its assets were verified accessible without authentication. Vercel may protect individual deployment or preview URLs separately; no protection settings were changed.
 
 The two browser-safe Supabase variables are configured for Vercel production, preview, and development. They are embedded in frontend builds and must never contain privileged credentials. GitHub Pages currently renders the component lab without backend configuration.
 
-Deploy manually from the project directory with `vercel --prod`. The attempted automatic GitHub connection did not succeed, so pushes do not currently trigger Vercel deployments. To enable that later, connect the repository under the Vercel project's Git settings and grant the Vercel GitHub app access. GitHub Pages automatic deployment is separate and remains enabled.
+Deploy manually from the project directory with `vercel --prod`, then confirm `meridianbridge.vercel.app` points to the resulting deployment. If needed, run `vercel alias set <deployment-url> meridianbridge.vercel.app`. The hyphenated `meridian-bridge.vercel.app` domain was already in use, so the unhyphenated branded domain is used. The GitHub connection previously failed, so pushes do not currently trigger Vercel deployments. To enable that later, connect the repository under the Vercel project's Git settings and grant the Vercel GitHub app access. GitHub Pages automatic deployment is separate.
 
 ## Meridian Bridge inquiries and content
 

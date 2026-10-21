@@ -28,7 +28,7 @@ jobs:
       - name: Lint
         run: npm run lint
       - name: Build
-        run: npm run build -- --base=/miio-design-lab/
+        run: npm run build -- --base=/meridian-bridge/
       - name: Upload Pages artifact
         if: vars.PAGES_ENABLED == 'true'
         uses: actions/upload-pages-artifact@v4

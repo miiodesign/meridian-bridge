@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { asset } from '../meridian/design'
 
 type LabLayoutProps = {
   children: ReactNode
@@ -9,9 +10,9 @@ export function LabLayout({ children, page = 'lab' }: LabLayoutProps) {
   return (
     <div className="lab-layout">
       <header className="lab-header">
-        <a className="brand" href="#/lab" aria-label="Miio Design Lab home">
-          <span className="brand-mark" aria-hidden="true">m.</span>
-          <span>miio <span className="brand-detail">/ design lab</span></span>
+        <a className="brand" href="#/lab" aria-label="Meridian Bridge component lab">
+          <img src={asset('5ae22.svg')} alt="" />
+          <span>Meridian Bridge <span className="brand-detail">/ component lab</span></span>
         </a>
         <nav className="lab-nav" aria-label="Main navigation">
           <a href="#/lab" aria-current={page === 'lab' ? 'page' : undefined}>Lab</a>
@@ -20,7 +21,7 @@ export function LabLayout({ children, page = 'lab' }: LabLayoutProps) {
         </nav>
       </header>
       <main id="main-content">{children}</main>
-      <footer className="lab-footer">Made for curiosity. Built with React.</footer>
+      <footer className="lab-footer">Meridian Bridge · Built with React.</footer>
     </div>
   )
 }
