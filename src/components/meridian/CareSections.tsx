@@ -1,5 +1,6 @@
 import { ActionLink, FeatureGrid, Icon, SectionHeading } from './Shared'
 import { asset, comparisons, expectations, processSteps, providers, screeningTests } from './design'
+import { ScreeningPackages } from './ScreeningPackages'
 
 function CountryCell({ canada, wait, cost }: { canada?: boolean; wait: string; cost: string }) {
   return (
@@ -66,11 +67,14 @@ export function HealthScreening() {
   return (
     <section id="screening" className="mb-section mb-screening">
       <SectionHeading eyebrow="Understand your options" title="What is a complete health check?" />
-      <article className="mb-screening-card">
-        <h3>What can it include?</h3>
-        <p>Tests vary by provider and package, but can include (and are not limited to):</p>
-        <ul>{screeningTests.map(([icon, text]) => <li key={text}><Icon name={icon} /><span>{text}</span></li>)}</ul>
-      </article>
+      <div className="mb-screening-layout">
+        <article className="mb-screening-card">
+          <h3>What can it include?</h3>
+          <p>Tests vary by provider and package, but can include (and are not limited to):</p>
+          <ul>{screeningTests.map(([icon, text]) => <li key={text}><Icon name={icon} /><span>{text}</span></li>)}</ul>
+        </article>
+        <ScreeningPackages />
+      </div>
     </section>
   )
 }
