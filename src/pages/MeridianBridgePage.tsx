@@ -6,6 +6,7 @@ import { AboutAndQuestions, SiteFooter } from '../components/meridian/AboutConta
 import { useScrollReveal } from '../components/meridian/useScrollReveal'
 import './MeridianBridge.css'
 import './MeridianEditorial.css'
+import './ScreeningPackages.css'
 
 export function MeridianBridgePage() {
   const pageRef = useRef<HTMLDivElement>(null)

@@ -6,6 +6,8 @@ const revealTargets = [
   '.mb-steps > article',
   '.mb-travel',
   '.mb-screening-card',
+  '.mb-package-introduction',
+  '.mb-screening-package',
   '.mb-pricing-card',
   '.mb-provider-cards > article',
   '.mb-expectations',
