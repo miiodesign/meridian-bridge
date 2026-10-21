@@ -78,14 +78,12 @@
 .mb-comparison-1 .mb-comparison-image img { height: 129.04%; top: -18.42%; }
 .mb-comparison-2 .mb-comparison-image img { height: 101.84%; top: -1.84%; }
 .mb-country { padding: 12px; min-width: 0; background: var(--mb-pale); color: var(--mb-jade); font-size: 13px; font-weight: 600; }
-.mb-comparison-0 .mb-country:not(.mb-country-canada) { background: var(--mb-ivory); }
 .mb-country > strong { display: block; margin-bottom: 12px; font-size: 12px; text-transform: uppercase; }
 .mb-country .mb-country-label { display: flex; align-items: center; gap: 6px; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
 .mb-country p { line-height: 1.4; }
 .mb-country hr { border: 0; height: 1px; background: #accdab; margin: 12px 0; }
-.mb-country-canada { background: transparent; color: var(--mb-ink); }
+.mb-country-canada { background: var(--mb-sand); color: var(--mb-ink); }
 .mb-country-canada > strong { color: var(--mb-muted); }
-.mb-country-shaded { background: var(--mb-sand); }
 .mb-country-canada hr { background: var(--mb-pale); }
 .mb-footnote { color: var(--mb-muted); font-size: 13px; margin: 22px 32px 0; }
 .mb-process { background: var(--mb-sand); }

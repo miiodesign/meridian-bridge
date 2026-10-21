@@ -26,11 +26,11 @@ export const comparisons = [
 ] as const
 
 export const processSteps = [
-  ['01', '1c73b.svg', 'Start with a conversation', 'Tell us what you are looking for during a free consultation or through our inquiry form.'],
-  ['02', 'bacba.svg', 'Receive tailored options', 'We identify suitable providers and packages based on your needs.'],
-  ['03', '3527e.svg', 'We coordinate the booking', 'We handle communication with the provider and appointment details.'],
-  ['04', '76561.svg', 'We prepare you for China', 'Practical guidance, payment preparation and on-trip support.'],
-  ['05', 'e3ac5.svg', 'Receive your results', 'We help with report logistics and guidance for your own physician.'],
+  ['01', 'Start with a conversation', 'Tell us what you are looking for during a free consultation or through our inquiry form.'],
+  ['02', 'Receive tailored options', 'We identify suitable providers and packages based on your needs.'],
+  ['03', 'We coordinate the booking', 'We handle communication with the provider and appointment details.'],
+  ['04', 'We prepare you for China', 'Practical guidance, payment preparation and on-trip support.'],
+  ['05', 'Receive your results', 'We help with report logistics and guidance for your own physician.'],
 ] as const
 
 export const screeningTests = [

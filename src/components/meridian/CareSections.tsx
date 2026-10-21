@@ -1,9 +1,9 @@
 import { ActionLink, FeatureGrid, Icon, SectionHeading } from './Shared'
 import { asset, comparisons, expectations, processSteps, providers, screeningTests } from './design'
 
-function CountryCell({ canada, wait, cost, shaded }: { canada?: boolean; wait: string; cost: string; shaded?: boolean }) {
+function CountryCell({ canada, wait, cost }: { canada?: boolean; wait: string; cost: string }) {
   return (
-    <div className={`mb-country ${canada ? 'mb-country-canada' : ''} ${shaded ? 'mb-country-shaded' : ''}`}>
+    <div className={`mb-country${canada ? ' mb-country-canada' : ''}`}>
       <strong>{canada ? 'In Canada' : 'In China'}</strong>
       <p className="mb-country-label"><Icon name={canada ? 'e69fe.svg' : '6b9ed.svg'} />Wait time</p>
       <p>{wait}</p>
@@ -27,7 +27,7 @@ export function WhyChina() {
             <div className={`mb-comparison-body mb-comparison-${index}`}>
               <div className="mb-comparison-image"><img src={asset(item.image)} alt={item.title.replace(' *', '')} loading="lazy" /></div>
               <CountryCell wait="Typically 1 – 7 days" cost="From ~$100 USD (¥700+)" />
-              <CountryCell canada wait={item.wait} cost={item.cost} shaded={index === 0} />
+              <CountryCell canada wait={item.wait} cost={item.cost} />
             </div>
           </article>
         ))}
@@ -42,8 +42,11 @@ export function HowItWorks() {
     <section id="how-it-works" className="mb-section mb-process">
       <SectionHeading eyebrow="Your next steps" title="How it works">A clear, straightforward process from first question to follow-up.</SectionHeading>
       <div className="mb-steps">
-        {processSteps.map(([number, icon, title, text]) => (
-          <article key={number}><span>{number}</span><Icon name={icon} /><h3>{title}</h3><p>{text}</p></article>
+        {processSteps.map(([number, title, text]) => (
+          <article key={number}>
+            <span className="mb-step-number">{number}</span>
+            <div className="mb-step-copy"><h3>{title}</h3><p>{text}</p></div>
+          </article>
         ))}
       </div>
       <div className="mb-travel">
