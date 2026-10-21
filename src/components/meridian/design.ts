@@ -1,5 +1,6 @@
 export const asset = (name: string) => `${import.meta.env.BASE_URL}meridian/${name}`
 export const consultationUrl = 'https://calendly.com/gordon-meridianbridge/15min-consultation'
+export const inquiryUrl = 'https://tally.so/r/7Rpe72'
 
 export const navigation = [
   ['Why China', 'why-china'],
@@ -58,8 +59,20 @@ export const expectations = [
 ] as const
 
 export const questions = [
-  'Can you help if I only want an MRI or specific test?',
-  'How do you choose which provider to recommend?',
-  'Will the hospitals speak English?',
-  'How and when will I receive my results?',
+  {
+    question: 'Can you help if I only want an MRI or specific test?',
+    answer: 'You can ask about a specific scan or test as well as a full health screening. Tell us what you are looking for, and we can discuss suitable provider options and booking requirements. A qualified clinician should advise which tests are appropriate for you.',
+  },
+  {
+    question: 'How do you choose which provider to recommend?',
+    answer: 'We match your screening needs and travel plans with our network of hospitals and diagnostic providers in Guangdong. Relevant considerations include the services available, international-patient support, appointment availability, and pricing. We discuss the options with you before you decide.',
+  },
+  {
+    question: 'Will the hospitals speak English?',
+    answer: 'Language arrangements vary by hospital and department. Meridian Bridge offers English, Mandarin, and Cantonese coordination support. Before booking, we will discuss the provider’s language services and whether interpretation or translated reports need to be arranged.',
+  },
+  {
+    question: 'How and when will I receive my results?',
+    answer: 'Report timing, format, and language depend on the provider and the tests you choose. Confirm these arrangements before booking. We help coordinate report logistics so you can share the results with your own physician; we do not diagnose conditions or replace medical follow-up.',
+  },
 ] as const
