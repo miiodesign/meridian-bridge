@@ -1,0 +1,30 @@
+{
+  "project": "Meridian Bridge",
+  "archived_on": "2026-10-21",
+  "archive_type": "Non-destructive documentation snapshot",
+  "source_commit": "1812c032f9a45eec97e0df3c399a65861aaa9bd5",
+  "repository": "https://github.com/miiodesign/meridian-bridge",
+  "production_url": "https://meridianbridge.vercel.app/",
+  "active_documentation_url": "https://meridianbridge.vercel.app/#/docs",
+  "snapshots": [
+    {
+      "source": "README.md",
+      "snapshot": "README.md",
+      "sha256": "c57a34e760333b4dd33e1d959cd6cf789cb7bf1fb606ec3cbfd87401131e2183"
+    },
+    {
+      "source": "src/pages/DocumentationPage.tsx",
+      "snapshot": "DocumentationPage.tsx.snapshot",
+      "sha256": "dc6cc2c732753aebf68b8670ec229ecc0ae609f38d32c480ed26f57544d4797a"
+    }
+  ],
+  "task_status": "Completed; production smoke test passed in this conversation",
+  "verification_scope": "Chrome viewport checks from 320px to 1440px; hero, cards, navigation, dialogs, keyboard, reduced motion, assets and link destinations.",
+  "remaining_owner_notes": [
+    "Privacy and Terms remain labeled drafts.",
+    "Physical iOS/Android browser testing was not performed.",
+    "No inquiry or booking was submitted; notification delivery was not tested."
+  ],
+  "active_files_preserved": true,
+  "repository_archived": false
+}
