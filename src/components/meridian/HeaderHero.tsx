@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Button } from '../ui/Button'
 import { ActionLink, Brand, Icon } from './Shared'
 import { asset, capabilities, consultationUrl, inquiryUrl, navigation } from './design'
+import { BrandPattern } from './BrandPattern'
 
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -63,7 +64,7 @@ export function Hero() {
   return (
     <>
       <section className="mb-hero" aria-labelledby="meridian-title">
-        <img className="mb-hero-image" src={asset('dff24.png')} alt="Modern hospital campus alongside a river in China" fetchPriority="high" />
+        <img className="mb-hero-image" src={asset('guangzhou-lounge.jpg')} alt="A sunlit lounge overlooking the Pearl River and Guangzhou skyline at golden hour" width="1920" height="640" fetchPriority="high" />
         <div className="mb-hero-copy">
           <p className="mb-eyebrow">World class diagnostics. A different kind of journey.</p>
           <h1 id="meridian-title">Your health has<br />been waiting<br /><em>long enough.</em></h1>
@@ -82,6 +83,7 @@ export function Hero() {
 export function PatientContext() {
   return (
     <section className="mb-patient-context" aria-label="International patient context">
+      <BrandPattern />
       <div>
         <div className="mb-metrics">
           <div><strong>1.28 million</strong><p>international patient visits were recorded at China’s key foreign-facing hospitals in 2025.</p></div>

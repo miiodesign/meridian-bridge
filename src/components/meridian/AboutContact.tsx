@@ -1,9 +1,10 @@
 import { useId, useRef, type ReactNode } from 'react'
 import { Button } from '../ui/Button'
-import { ActionLink, Brand, FeatureGrid, Icon, SectionHeading } from './Shared'
-import { asset, capabilities, inquiryUrl, questions } from './design'
+import { ActionLink, Brand, Icon, SectionHeading } from './Shared'
+import { asset, consultationUrl, inquiryUrl, navigation, questions, siteUrl } from './design'
 import { FounderStory } from './FounderStory'
 import { PrivacyContent, TermsContent } from './LegalContent'
+import { BrandPattern } from './BrandPattern'
 
 type ContentDialogProps = { title: string; label: string; children: ReactNode; icon?: string }
 
@@ -51,7 +52,7 @@ export function AboutAndQuestions() {
 export function ContactSection() {
   return (
     <section id="inquiry" className="mb-contact">
-      <div>
+      <div className="mb-contact-copy">
         <h2>Ready to explore your options?</h2>
         <p>Book a free 15-minute consultation, or send us what you’re looking for.</p>
         <div className="mb-actions">
@@ -60,7 +61,6 @@ export function ContactSection() {
         </div>
         <p className="mb-inquiry-note">The inquiry form opens on Tally in a new tab. Please do not include medical records or sensitive health information.</p>
       </div>
-      <div className="mb-contact-pattern" aria-hidden="true"><img src={asset('5878a.png')} alt="" loading="lazy" /></div>
     </section>
   )
 }
@@ -68,8 +68,26 @@ export function ContactSection() {
 export function SiteFooter() {
   return (
     <footer className="mb-footer">
+      <BrandPattern />
+      <ContactSection />
       <div className="mb-footer-main">
-        <Brand /><span>www.meridianbridge.ca</span>
+        <div className="mb-footer-introduction">
+          <Brand />
+          <p>Based in Canada.<br />Connected to China.</p>
+        </div>
+        <nav className="mb-footer-navigation" aria-label="Explore Meridian Bridge">
+          <p className="mb-footer-label">Explore</p>
+          {navigation.map(([label, id]) => <a href={`#${id}`} key={id}>{label}</a>)}
+        </nav>
+        <div className="mb-footer-connect">
+          <p className="mb-footer-label">A conversation is a good place to start.</p>
+          <a href={consultationUrl} target="_blank" rel="noopener noreferrer">Book a free consultation <span aria-hidden="true">↗</span></a>
+          <a href={inquiryUrl} target="_blank" rel="noopener noreferrer">Send an inquiry <span aria-hidden="true">↗</span></a>
+          <a className="mb-footer-domain" href={siteUrl}>meridianbridge.vercel.app</a>
+        </div>
+      </div>
+      <div className="mb-footer-bottom">
+        <p>Meridian Bridge · Health screening, thoughtfully coordinated.</p>
         <div className="mb-legal">
           <ContentDialog title="Privacy" label="Privacy"><PrivacyContent /></ContentDialog>
           <span>·</span>
@@ -77,7 +95,6 @@ export function SiteFooter() {
           <span>·</span><a href={inquiryUrl} target="_blank" rel="noopener noreferrer">Contact</a>
         </div>
       </div>
-      <FeatureGrid items={capabilities} />
     </footer>
   )
 }
