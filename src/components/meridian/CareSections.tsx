@@ -1,6 +1,7 @@
 import { ActionLink, FeatureGrid, Icon, SectionHeading } from './Shared'
 import { asset, comparisons, expectations, processSteps, providers, screeningTests } from './design'
 import { ScreeningPackages } from './ScreeningPackages'
+import { MobileCardRail } from './MobileCardRail'
 
 function CountryCell({ canada, wait, cost }: { canada?: boolean; wait: string; cost: string }) {
   return (
@@ -21,18 +22,18 @@ export function WhyChina() {
       <SectionHeading eyebrow="Why China" title="Why China is becoming the destination?">
         Shorter wait times, more accessible pricing, and access to comprehensive screening.
       </SectionHeading>
-      <div className="mb-comparisons">
+      <MobileCardRail name="comparisons" className="mb-comparisons" label="Treatment comparisons">
         {comparisons.map((item, index) => (
           <article key={item.title}>
             <h3><Icon name={item.icon} />{item.title}</h3>
             <div className={`mb-comparison-body mb-comparison-${index}`}>
-              <div className="mb-comparison-image"><img src={asset(item.image)} alt={item.title.replace(' *', '')} loading="lazy" /></div>
+              <div className="mb-comparison-image"><img src={asset(item.image)} alt={item.imageAlt} width={item.imageWidth} height={item.imageHeight} loading="lazy" decoding="async" /></div>
               <CountryCell wait="Typically 1 – 7 days" cost="From ~$100 USD (¥700+)" />
               <CountryCell canada wait={item.wait} cost={item.cost} />
             </div>
           </article>
         ))}
-      </div>
+      </MobileCardRail>
       <p className="mb-footnote">* Prices and wait times are approximate and may vary by provider and location. China pricing reflects private clinic rates in major cities.</p>
     </section>
   )

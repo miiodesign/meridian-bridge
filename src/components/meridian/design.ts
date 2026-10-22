@@ -20,9 +20,9 @@ export const capabilities = [
 ] as const
 
 export const comparisons = [
-  { title: 'MRI (private) *', icon: 'fa59d.svg', image: '3f753.png', wait: '8 – 18 weeks', cost: '$400 – $1,200 CAD' },
-  { title: 'CT Scan (private) *', icon: 'fa59d.svg', image: '119e9.png', wait: '4 – 12 weeks', cost: '$300 – $800 CAD' },
-  { title: 'Complete Health Screening', icon: '2d269.svg', image: '30d0f.png', wait: 'Limited availability', cost: '$2,500 – $5,000+ CAD' },
+  { title: 'MRI (private) *', icon: 'fa59d.svg', image: '3f753.png', imageAlt: 'An MRI scanner and patient table', imageWidth: 1500, imageHeight: 1000, wait: '8 – 18 weeks', cost: '$400 – $1,200 CAD' },
+  { title: 'CT Scan (private) *', icon: 'fa59d.svg', image: 'ct-scan.jpg', imageAlt: 'A CT scanner and patient table in a bright examination room', imageWidth: 554, imageHeight: 554, wait: '4 – 12 weeks', cost: '$300 – $800 CAD' },
+  { title: 'Complete Health Screening', icon: '2d269.svg', image: 'complete-health-screening.jpg', imageAlt: 'A sunlit healthcare room with a patient bed and comfortable seating', imageWidth: 1000, imageHeight: 600, wait: 'Limited availability', cost: '$2,500 – $5,000+ CAD' },
 ] as const
 
 export const processSteps = [

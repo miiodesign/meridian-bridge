@@ -7,6 +7,7 @@ import { useScrollReveal } from '../components/meridian/useScrollReveal'
 import './MeridianBridge.css'
 import './MeridianEditorial.css'
 import './ScreeningPackages.css'
+import './MobileCardRail.css'
 
 export function MeridianBridgePage() {
   const pageRef = useRef<HTMLDivElement>(null)
