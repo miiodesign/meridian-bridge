@@ -74,6 +74,7 @@
 .meridian .mb-comparison-2 .mb-comparison-image img { width: 100%; height: 100%; left: 0; top: 0; object-fit: cover; object-position: center; }
 .meridian .mb-country { padding: 20px; font-size: 14px; background: var(--mb-ivory); color: var(--mb-jade); }
 .meridian .mb-country:not(.mb-country-home) hr { background: var(--mb-sand); }
+.meridian .mb-country-home, .meridian .mb-country-home > strong { color: var(--mb-ink); }
 .meridian .mb-country-home { background: var(--mb-sand); }
 .meridian .mb-country > strong { font-size: 11px; letter-spacing: .08em; margin-bottom: 20px; }
 .meridian .mb-country .mb-country-label { font-size: 10px; letter-spacing: .08em; }
@@ -369,7 +370,7 @@
 
 /* Small all-caps labels (former eyebrow style) */
 .meridian :is(.mb-country-select-label, .mb-travel .mb-travel-subtitle, .mb-meet-gordon .mb-meet-question) { margin-top: 0; color: var(--mb-gold); font: 600 11px/1.6 'Source Sans Pro', sans-serif; letter-spacing: .16em; text-transform: uppercase; }
-.meridian .mb-meet-gordon .mb-meet-question { color: var(--mb-jade); }
+.meridian :is(.mb-meet-gordon .mb-meet-question, .mb-why .mb-country-select-label) { color: var(--mb-jade); }
 
 /* Avoid one-word last lines where the browser supports it */
 .meridian p { text-wrap: pretty; }

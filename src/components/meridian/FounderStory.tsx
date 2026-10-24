@@ -17,7 +17,7 @@ export function FounderStory() {
 export function MeetGordon({ question = false }: { question?: boolean }) {
   return (
     <>
-      {question && <p className="mb-meet-question">Who will I be speaking to?</p>}
+      {question && <p className="mb-meet-question">Who will be speaking to you?</p>}
       <h3>Meet Gordon</h3>
       <ContentDialog title="Gordon, the Founder" label="Read Gordon’s story" icon="e1e40.svg">
         <FounderStory />
