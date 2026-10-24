@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Button } from '../ui/Button'
-import { ActionLink, Brand } from './Shared'
+import { ActionLink, Brand, Icon } from './Shared'
 import { asset, consultationUrl, inquiryUrl, navigation } from './design'
 import { BrandPattern } from './BrandPattern'
 import { useActiveSection } from './useActiveSection'
@@ -52,7 +52,7 @@ export function SiteHeader() {
             onClick={() => { selectSection(id); setMenuOpen(false) }}>{label}</a>
         ))}
         <a className="mb-mobile-consultation" href={consultationUrl} target="_blank" rel="noopener noreferrer"
-          onClick={() => setMenuOpen(false)}>Book a Free Consultation <span aria-hidden="true">↗</span></a>
+          onClick={() => setMenuOpen(false)}>Book a Free 20-Minute Consultation<Icon name="ee954.svg" /></a>
       </nav>
       <a className="mb-header-cta" href={consultationUrl} target="_blank" rel="noopener noreferrer">Book a Free 20-Minute Consultation</a>
     </header>

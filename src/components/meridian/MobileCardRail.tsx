@@ -1,7 +1,7 @@
 import { Children, useEffect, useId, useRef, useState, type CSSProperties, type KeyboardEvent, type ReactNode } from 'react'
 import { Button } from '../ui/Button'
 
-type RailState = { active: number; overflow: boolean; height: number | undefined }
+type RailState = { active: number; overflow: boolean }
 type MobileCardRailProps = {
   children: ReactNode
   className: string
@@ -22,7 +22,7 @@ export function MobileCardRail({ children, className, label, name }: MobileCardR
   const trackId = useId()
   const hintId = `${trackId}-hint`
   const count = Children.count(children)
-  const [state, setState] = useState<RailState>({ active: 0, overflow: false, height: undefined })
+  const [state, setState] = useState<RailState>({ active: 0, overflow: false })
 
   useEffect(() => {
     const track = trackRef.current
@@ -36,7 +36,6 @@ export function MobileCardRail({ children, className, label, name }: MobileCardR
       if (track.scrollTop !== 0) track.scrollTop = 0
       const overflow = mobile.matches && track.scrollWidth > track.clientWidth + 1
       let active = 0
-      let height: number | undefined
       if (overflow && cards.length) {
         const left = track.getBoundingClientRect().left
         let distance = Infinity
@@ -48,10 +47,9 @@ export function MobileCardRail({ children, className, label, name }: MobileCardR
           }
         }
         if (track.scrollLeft >= track.scrollWidth - track.clientWidth - 2) active = cards.length - 1
-        height = Math.ceil(cards[active].getBoundingClientRect().height) + 12
       }
-      setState(previous => previous.active === active && previous.overflow === overflow && previous.height === height
-        ? previous : { active, overflow, height })
+      setState(previous => previous.active === active && previous.overflow === overflow
+        ? previous : { active, overflow })
     }
     function schedule() {
       if (!frame) frame = window.requestAnimationFrame(measure)
@@ -105,8 +103,7 @@ export function MobileCardRail({ children, className, label, name }: MobileCardR
           role="group" aria-label={`${label} cards`}
           aria-describedby={state.overflow ? hintId : undefined}
           tabIndex={state.overflow ? 0 : undefined}
-          onKeyDown={handleKey}
-          style={state.overflow && state.height ? { height: state.height } : undefined}>
+          onKeyDown={handleKey}>
           {children}
         </div>
         {state.overflow && (
