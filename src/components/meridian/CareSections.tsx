@@ -1,9 +1,10 @@
 import type { MouseEvent } from 'react'
-import { ActionLink, ContentDialog, CountrySelect, FeatureGrid, Icon, SectionHeading } from './Shared'
+import { ActionLink, FeatureGrid, Icon, SectionHeading } from './Shared'
+import { CountrySelect } from './CountrySelect'
 import { asset, comparisons, countries, expectations, processSteps, providers, screeningTests, type CountryCode } from './design'
 import { ScreeningPackages } from './ScreeningPackages'
 import { MobileCardRail } from './MobileCardRail'
-import { FounderStory } from './FounderStory'
+import { MeetGordon } from './FounderStory'
 
 function CountryCell({ home, wait, cost }: { home?: string; wait: string; cost: string }) {
   return (
@@ -24,8 +25,8 @@ export function WhyChina({ country, onCountryChange }: CountryProps) {
   const homeName = countries.find(({ code }) => code === country)?.name ?? 'Canada'
   return (
     <section id="why-china" className="mb-section mb-why">
-      <SectionHeading title="Why China is becoming the destination?" aside={<CountrySelect country={country} onChange={onCountryChange} />}>
-        Shorter wait times, more accessible pricing, and access to comprehensive screening.
+      <SectionHeading title="Why China is becoming the destination?" aside={<CountrySelect country={country} onChange={onCountryChange} label="Compare with:" />}>
+        Shorter wait times, more accessible pricing, and access to comprehensive{'\u00a0'}screening.
       </SectionHeading>
       <MobileCardRail name="comparisons" className="mb-comparisons" label="Treatment comparisons">
         {comparisons.map((item, index) => (
@@ -79,15 +80,7 @@ export function HowItWorks() {
         ))}
         <article className="mb-meet-gordon">
           <img src={asset('gordon-zhang.jpeg')} alt="Gordon Zhang, founder of Meridian Bridge" width="800" height="800" loading="lazy" />
-          <div className="mb-step-copy">
-            <p className="mb-meet-question">Who will I be speaking to?</p>
-            <h3>Meet Gordon</h3>
-            <p>Your consultation is with Gordon Zhang, our founder. He has personally vetted our partner hospitals and has been through the screening himself.</p>
-            <ContentDialog title="Gordon, the Founder" label="Read Gordon’s story" icon="e1e40.svg">
-              <FounderStory />
-              <ActionLink>Book a Free Consultation</ActionLink>
-            </ContentDialog>
-          </div>
+          <div className="mb-step-copy"><MeetGordon question /></div>
         </article>
       </div>
       <div className="mb-travel">

@@ -81,9 +81,9 @@
     padding: 0;
     border: 0;
     border-radius: 50%;
-    background: color-mix(in srgb, var(--mb-ivory) 72%, transparent);
-    color: var(--mb-evergreen);
-    opacity: .7;
+    background: color-mix(in srgb, var(--mb-jade) 72%, transparent);
+    color: var(--mb-ivory);
+    opacity: .9;
     cursor: pointer;
     -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);

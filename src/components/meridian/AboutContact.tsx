@@ -1,5 +1,6 @@
 import { ActionLink, ContentDialog, Icon, SectionHeading } from './Shared'
 import { inquiryUrl, questions } from './design'
+import { MeetGordon } from './FounderStory'
 import { PrivacyContent, TermsContent } from './LegalContent'
 import { BrandPattern } from './BrandPattern'
 
@@ -19,6 +20,7 @@ export function AboutAndQuestions() {
       <div id="about" className="mb-about">
         <SectionHeading title="About Meridian Bridge" />
         <p>Meridian Bridge was founded to help English-speaking clients access high-quality health screening and diagnostic testing in China with more clarity, confidence and support. Based in Canada, we understand both cultures and work closely with trusted providers in Guangdong.</p>
+        <div className="mb-meet-gordon"><MeetGordon /></div>
       </div>
     </section>
   )
@@ -46,7 +48,7 @@ export function SiteFooter() {
       <BrandPattern />
       <ContactSection />
       <div className="mb-footer-bottom">
-        <p>Meridian Bridge · Health screening, thoughtfully coordinated.</p>
+        <p>Meridian Bridge · 2026</p>
         <div className="mb-legal">
           <ContentDialog title="Privacy" label="Privacy"><PrivacyContent /></ContentDialog>
           <span>·</span>

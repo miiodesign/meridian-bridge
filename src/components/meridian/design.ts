@@ -13,12 +13,6 @@ export const navigation = [
   ['FAQ', 'faq'],
 ] as const
 
-export const capabilities = [
-  ['c2f85.svg', 'International departments', 'Dedicated services for foreign patients'],
-  ['c8978.svg', 'Modern equipment', 'Western-standard MRI, CT, ultrasound and diagnostic systems'],
-  ['1c73b.svg', 'Proven experience', 'Decades of care for international visitors'],
-] as const
-
 export const countries = [
   { code: 'CA', name: 'Canada', flights: '~$800 – $1,200 CAD', currency: 'CAD' },
   { code: 'US', name: 'United States', flights: '~$700 – $1,300 USD', currency: 'USD' },
@@ -38,7 +32,7 @@ export const comparisons = [
     },
   },
   {
-    title: 'CT Scan (private) *', icon: 'fa59d.svg', image: 'ct-scan.jpg', imageAlt: 'A CT scanner and patient table in a bright examination room', imageWidth: 554, imageHeight: 554,
+    title: 'CT Scan (private) *', icon: 'fa59d.svg', image: 'ct-scan-suite.webp', imageAlt: 'A CT scanner and patient table in a warmly lit examination room', imageWidth: 1536, imageHeight: 1024,
     home: {
       CA: { wait: '4 – 12 weeks', cost: '$300 – $800 CAD' },
       US: { wait: '1 – 3 weeks', cost: '$500 – $3,000 USD' },
@@ -84,10 +78,10 @@ export const providers = [
 ] as const
 
 export const expectations = [
-  ['13c26.svg', 'Western-standard equipment', 'Modern MRI, CT, ultrasound and diagnostic systems.'],
-  ['1c73b.svg', 'Dedicated international departments', 'VIP and foreign-patient services.'],
-  ['ba4f6.svg', 'Experienced teams', 'Decades of experience serving international patients.'],
-  ['3ff93.svg', 'Streamlined patient journey', 'Registration, interpretation, imaging access and follow-up support.'],
+  ['13c26-brass.svg', 'Western-standard equipment', 'Modern MRI, CT, ultrasound and diagnostic systems.'],
+  ['1c73b-brass.svg', 'Dedicated international departments', 'VIP and foreign-patient services.'],
+  ['ba4f6-brass.svg', 'Experienced teams', 'Decades of experience serving international patients.'],
+  ['3ff93-brass.svg', 'Streamlined patient journey', 'Registration, interpretation, imaging access and follow-up support.'],
 ] as const
 
 export const questions = [

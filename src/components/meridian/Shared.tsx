@@ -1,6 +1,6 @@
 import { useId, useRef, type MouseEvent, type ReactNode } from 'react'
 import { Button } from '../ui/Button'
-import { asset, consultationUrl, countries, type CountryCode } from './design'
+import { asset, consultationUrl } from './design'
 
 export function Icon({ name }: { name: string }) {
   return <img className="mb-icon" src={asset(name)} alt="" aria-hidden="true" />
@@ -41,23 +41,6 @@ export function SectionHeading({ title, children, aside }: {
       <h2>{title}</h2>
       {children && <p>{children}</p>}
       {aside}
-    </div>
-  )
-}
-
-export function CountrySelect({ country, onChange }: { country: CountryCode; onChange: (country: CountryCode) => void }) {
-  const id = useId()
-  return (
-    <div className="mb-country-select">
-      <label htmlFor={id}>Compare with</label>
-      <span className="mb-country-select-field">
-        <select id={id} value={country} onChange={event => onChange(event.currentTarget.value as CountryCode)}>
-          {countries.map(({ code, name }) => <option key={code} value={code}>{name}</option>)}
-        </select>
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-          <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </span>
     </div>
   )
 }

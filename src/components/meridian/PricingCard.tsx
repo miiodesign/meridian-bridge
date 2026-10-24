@@ -1,7 +1,7 @@
 import { useId, useState } from 'react'
 import { Button } from '../ui/Button'
 import { Icon } from './Shared'
-import { countries, type CountryCode } from './design'
+import { consultationUrl, countries, type CountryCode } from './design'
 
 const feeInclusions = [
   'Provider and package research',
@@ -55,10 +55,17 @@ export function PricingCard({ scenario, country }: { scenario: 'travelling' | 'a
               <div><dt>Accommodation (2–3 nights)</dt><dd>~$300 – $600 USD</dd></div>
               <div><dt>Local transport & meals</dt><dd>~$100 – $300 USD</dd></div>
             </dl>}
-            <div className="mb-total">
-              <span>{alreadyGoing ? 'Screening + facilitation fee' : 'Planning your total'}</span>
-              <strong>{alreadyGoing ? '$700 – $1,400 USD' : 'Request a personalized quote'}</strong>
-            </div>
+            {alreadyGoing ? (
+              <div className="mb-total">
+                <span>Screening + facilitation fee</span>
+                <strong>$700 – $1,400 USD</strong>
+              </div>
+            ) : (
+              <a className="mb-total mb-total-link" href={consultationUrl} target="_blank" rel="noopener noreferrer">
+                <span>Planning your total</span>
+                <strong>Request a Personalized Quote<Icon name="ee954.svg" /></strong>
+              </a>
+            )}
           </>
         )}
       </div>

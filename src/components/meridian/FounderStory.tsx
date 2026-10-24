@@ -1,3 +1,4 @@
+import { ActionLink, ContentDialog } from './Shared'
 import { asset } from './design'
 
 export function FounderStory() {
@@ -10,5 +11,18 @@ export function FounderStory() {
       <p>Meridian Bridge isn’t me trying to convince you that China is the answer. It’s me offering you the same thing that appointment gave me: clarity, through hospitals I’ve personally vetted, from someone who has sat in that scanner himself. If you’re on a wait list with no end in sight, or putting off a checkup because the cost back home doesn’t add up, I want you to have what I got: a real answer and the peace of mind that comes with it.</p>
       <p className="mb-founder-signature">Gordon Zhang, Founder</p>
     </div>
+  )
+}
+
+export function MeetGordon({ question = false }: { question?: boolean }) {
+  return (
+    <>
+      {question && <p className="mb-meet-question">Who will I be speaking to?</p>}
+      <h3>Meet Gordon</h3>
+      <ContentDialog title="Gordon, the Founder" label="Read Gordon’s story" icon="e1e40.svg">
+        <FounderStory />
+        <ActionLink>Book a Free Consultation</ActionLink>
+      </ContentDialog>
+    </>
   )
 }

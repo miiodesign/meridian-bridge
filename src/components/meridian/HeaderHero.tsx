@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Button } from '../ui/Button'
 import { ActionLink, Brand } from './Shared'
-import { asset, capabilities, consultationUrl, inquiryUrl, navigation } from './design'
+import { asset, consultationUrl, inquiryUrl, navigation } from './design'
 import { BrandPattern } from './BrandPattern'
 import { useActiveSection } from './useActiveSection'
 
@@ -54,7 +54,7 @@ export function SiteHeader() {
         <a className="mb-mobile-consultation" href={consultationUrl} target="_blank" rel="noopener noreferrer"
           onClick={() => setMenuOpen(false)}>Book a Free Consultation <span aria-hidden="true">↗</span></a>
       </nav>
-      <a className="mb-header-cta" href={consultationUrl} target="_blank" rel="noopener noreferrer">Book a Free 20min Consultation</a>
+      <a className="mb-header-cta" href={consultationUrl} target="_blank" rel="noopener noreferrer">Book a Free 20-Minute Consultation</a>
     </header>
   )
 }
@@ -67,7 +67,7 @@ export function Hero() {
         <h1 id="meridian-title">Your health has<br />been waiting<br /><em>long enough.</em></h1>
         <p>Access comprehensive health screenings and diagnostic testing in China, with Meridian Bridge handling the coordination from Canada.</p>
         <div className="mb-actions">
-          <ActionLink>Book a Free 20 min Consultation</ActionLink>
+          <ActionLink>Book a Free 20-Minute Consultation</ActionLink>
           <ActionLink href={inquiryUrl} variant="mb-action-light" icon="8e1e6.svg">Send an Inquiry</ActionLink>
         </div>
       </div>
@@ -87,8 +87,6 @@ export function PatientContext() {
         </div>
         <p className="mb-source">Source: National Health Commission of China, 2025.</p>
       </div>
-      <img className="mb-context-divider" src={asset('c9005.svg')} alt="" />
-      <div className="mb-context-features">{capabilities.map(([, title, text]) => <article key={title}><h3>{title}</h3><p>{text}</p></article>)}</div>
     </section>
   )
 }
