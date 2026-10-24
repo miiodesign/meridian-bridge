@@ -38,20 +38,15 @@
   .meridian .mb-card-rail .mb-comparison-image { height: 200px; }
   .meridian .mb-card-rail .mb-comparisons h3 { min-height: 60px; margin-bottom: 16px; font-size: 26px; }
   .meridian .mb-card-rail .mb-country { padding: 16px 12px; font-size: 13px; }
-  .meridian .mb-rail-controls {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto 44px 44px;
-    align-items: center;
-    gap: 10px;
-    margin-top: 12px;
-  }
+  .meridian .mb-card-rail-viewport { position: relative; }
+  .meridian .mb-rail-controls { display: block; margin-top: 4px; }
   .meridian .mb-rail-controls[hidden] { display: none; }
   .meridian .mb-rail-position {
     display: block;
     appearance: none;
     width: 100%;
     min-width: 0;
-    height: 44px;
+    height: 32px;
     margin: 0;
     padding: 0;
     border: 0;
@@ -59,39 +54,45 @@
     background: transparent;
     cursor: pointer;
   }
-  .meridian .mb-rail-position::-webkit-slider-runnable-track { height: 2px; background: var(--mb-sand); border: 0; border-radius: 0; }
+  .meridian .mb-rail-position::-webkit-slider-runnable-track { height: 2px; background: color-mix(in srgb, var(--mb-sand) 70%, transparent); border: 0; border-radius: 0; }
   .meridian .mb-rail-position::-webkit-slider-thumb {
     appearance: none;
     width: var(--mb-rail-thumb-width);
-    height: 4px;
-    margin-top: -1px;
+    height: 2px;
     border: 0;
     border-radius: 0;
-    background: var(--mb-evergreen);
+    background: var(--mb-muted);
   }
-  .meridian .mb-rail-position::-moz-range-track { height: 2px; background: var(--mb-sand); border: 0; border-radius: 0; }
-  .meridian .mb-rail-position::-moz-range-thumb { width: var(--mb-rail-thumb-width); height: 4px; border: 0; border-radius: 0; background: var(--mb-evergreen); }
-  .meridian .mb-rail-position:is(:hover, :focus-visible)::-webkit-slider-thumb { background: var(--mb-jade); }
-  .meridian .mb-rail-position:is(:hover, :focus-visible)::-moz-range-thumb { background: var(--mb-jade); }
-  .meridian .mb-rail-counter { min-width: 32px; color: var(--mb-muted); font-size: 12px; text-align: center; font-variant-numeric: tabular-nums; }
+  .meridian .mb-rail-position::-moz-range-track { height: 2px; background: color-mix(in srgb, var(--mb-sand) 70%, transparent); border: 0; border-radius: 0; }
+  .meridian .mb-rail-position::-moz-range-thumb { width: var(--mb-rail-thumb-width); height: 2px; border: 0; border-radius: 0; background: var(--mb-muted); }
+  .meridian .mb-rail-position:is(:hover, :focus-visible)::-webkit-slider-thumb { background: var(--mb-evergreen); }
+  .meridian .mb-rail-position:is(:hover, :focus-visible)::-moz-range-thumb { background: var(--mb-evergreen); }
+  .meridian .mb-rail-counter { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .meridian .mb-rail-arrow.button {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
-    margin: 0;
+    width: 32px;
+    height: 32px;
+    margin: -16px 0 0;
     padding: 0;
-    border: 1px solid var(--mb-sand);
-    border-radius: 0;
-    background: transparent;
+    border: 0;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--mb-ivory) 72%, transparent);
     color: var(--mb-evergreen);
-    font-size: 21px;
+    opacity: .7;
     cursor: pointer;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
   }
-  .meridian .mb-rail-arrow.button:is(:hover, :focus-visible):not(:disabled) { background: var(--mb-ivory); border-color: var(--mb-evergreen); }
-  .meridian .mb-rail-arrow.button:disabled { opacity: .35; cursor: default; }
+  .meridian .mb-rail-arrow.button[hidden] { display: none; }
+  .meridian .mb-rail-arrow-previous.button { left: 4px; }
+  .meridian .mb-rail-arrow-next.button { right: 4px; }
+  .meridian .mb-rail-arrow.button:is(:hover, :focus-visible) { opacity: 1; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .meridian .mb-rail-arrow.button { transition: background-color 180ms ease, border-color 180ms ease; }
+  .meridian .mb-rail-arrow.button { transition: opacity 180ms ease; }
 }

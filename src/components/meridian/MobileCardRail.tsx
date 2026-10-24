@@ -9,6 +9,14 @@ type MobileCardRailProps = {
   name: 'comparisons' | 'packages'
 }
 
+function RailChevron({ direction }: { direction: 'previous' | 'next' }) {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d={direction === 'next' ? 'M6 3.5L10.5 8L6 12.5' : 'M10 3.5L5.5 8L10 12.5'} stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
 export function MobileCardRail({ children, className, label, name }: MobileCardRailProps) {
   const trackRef = useRef<HTMLDivElement>(null)
   const trackId = useId()
@@ -92,13 +100,23 @@ export function MobileCardRail({ children, className, label, name }: MobileCardR
   return (
     <div className={`mb-card-rail mb-card-rail-${name}`} role="region" aria-label={label} data-card-rail={name}>
       <p id={hintId} className="mb-rail-instructions">Swipe horizontally, use the position control, or focus the cards and use the left and right arrow keys.</p>
-      <div ref={trackRef} id={trackId} className={`${className} mb-card-rail-track`}
-        role="group" aria-label={`${label} cards`}
-        aria-describedby={state.overflow ? hintId : undefined}
-        tabIndex={state.overflow ? 0 : undefined}
-        onKeyDown={handleKey}
-        style={state.overflow && state.height ? { height: state.height } : undefined}>
-        {children}
+      <div className="mb-card-rail-viewport">
+        <div ref={trackRef} id={trackId} className={`${className} mb-card-rail-track`}
+          role="group" aria-label={`${label} cards`}
+          aria-describedby={state.overflow ? hintId : undefined}
+          tabIndex={state.overflow ? 0 : undefined}
+          onKeyDown={handleKey}
+          style={state.overflow && state.height ? { height: state.height } : undefined}>
+          {children}
+        </div>
+        {state.overflow && (
+          <>
+            <Button className="mb-rail-arrow mb-rail-arrow-previous" hidden={state.active === 0} aria-label={`Previous ${label.toLowerCase()} card`}
+              aria-controls={trackId} onClick={() => moveTo(state.active - 1)}><RailChevron direction="previous" /></Button>
+            <Button className="mb-rail-arrow mb-rail-arrow-next" hidden={state.active === count - 1} aria-label={`Next ${label.toLowerCase()} card`}
+              aria-controls={trackId} onClick={() => moveTo(state.active + 1)}><RailChevron direction="next" /></Button>
+          </>
+        )}
       </div>
       <div className="mb-rail-controls" hidden={!state.overflow}>
         <input className="mb-rail-position" type="range" min="0" max={Math.max(0, count - 1)} step="1"
@@ -107,10 +125,6 @@ export function MobileCardRail({ children, className, label, name }: MobileCardR
           onChange={event => moveTo(Number(event.currentTarget.value))}
           style={{ '--mb-rail-thumb-width': `${100 / Math.max(1, count)}%` } as CSSProperties} />
         <span className="mb-rail-counter" aria-live="polite" aria-atomic="true">{state.active + 1} / {count}</span>
-        <Button className="mb-rail-arrow" disabled={state.active === 0} aria-label={`Previous ${label.toLowerCase()} card`}
-          aria-controls={trackId} onClick={() => moveTo(state.active - 1)}><span aria-hidden="true">←</span></Button>
-        <Button className="mb-rail-arrow" disabled={state.active === count - 1} aria-label={`Next ${label.toLowerCase()} card`}
-          aria-controls={trackId} onClick={() => moveTo(state.active + 1)}><span aria-hidden="true">→</span></Button>
       </div>
     </div>
   )

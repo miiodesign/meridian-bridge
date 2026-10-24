@@ -1,9 +1,10 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { SiteHeader, Hero, PatientContext } from '../components/meridian/HeaderHero'
 import { WhyChina, HowItWorks, HealthScreening, ProviderNetwork } from '../components/meridian/CareSections'
 import { PricingSection } from '../components/meridian/PricingSection'
 import { AboutAndQuestions, SiteFooter } from '../components/meridian/AboutContact'
 import { useScrollReveal } from '../components/meridian/useScrollReveal'
+import type { CountryCode } from '../components/meridian/design'
 import './MeridianBridge.css'
 import './MeridianEditorial.css'
 import './ScreeningPackages.css'
@@ -11,6 +12,7 @@ import './MobileCardRail.css'
 
 export function MeridianBridgePage() {
   const pageRef = useRef<HTMLDivElement>(null)
+  const [country, setCountry] = useState<CountryCode>('CA')
   useScrollReveal(pageRef)
   return (
     <div className="meridian" ref={pageRef}>
@@ -18,11 +20,11 @@ export function MeridianBridgePage() {
       <SiteHeader />
       <main id="meridian-main">
         <Hero />
+        <WhyChina country={country} onCountryChange={setCountry} />
         <PatientContext />
-        <WhyChina />
         <HowItWorks />
         <HealthScreening />
-        <PricingSection />
+        <PricingSection country={country} onCountryChange={setCountry} />
         <ProviderNetwork />
         <AboutAndQuestions />
       </main>
