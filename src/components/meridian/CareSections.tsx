@@ -90,7 +90,7 @@ export function HowItWorks() {
           <p>Many screening packages can be completed in a <strong>single morning,</strong> making it easy to include a full health check during a family visit, business trip or vacation.</p>
           <ActionLink href="#pricing" variant="mb-action-sand" icon="efa88.svg" onClick={showAlreadyGoingPricing}>Add a screening to your trip</ActionLink>
         </div>
-        <img src={asset('145ea.png')} alt="Traditional Chinese pavilion and gardens beside a lake" loading="lazy" />
+        <img src={asset('yong-qing-fang-aerial.webp')} alt="Aerial view of Yong Qing Fang's historic rooftops and canal in Guangzhou" width="1600" height="1067" loading="lazy" decoding="async" />
       </div>
     </section>
   )
