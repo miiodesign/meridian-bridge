@@ -13,16 +13,40 @@ export const navigation = [
   ['FAQ', 'faq'],
 ] as const
 
-export const capabilities = [
-  ['c2f85.svg', 'International departments', 'Dedicated services for foreign patients'],
-  ['c8978.svg', 'Modern equipment', 'Western-standard MRI, CT, ultrasound and diagnostic systems'],
-  ['1c73b.svg', 'Proven experience', 'Decades of care for international visitors'],
+export const countries = [
+  { code: 'CA', name: 'Canada', flights: '~$800 – $1,200 CAD', currency: 'CAD' },
+  { code: 'US', name: 'United States', flights: '~$700 – $1,300 USD', currency: 'USD' },
+  { code: 'UK', name: 'United Kingdom', flights: '~£550 – £950 GBP', currency: 'GBP' },
 ] as const
 
+export type CountryCode = typeof countries[number]['code']
+
+// Placeholder home-country figures until verified prices are supplied.
 export const comparisons = [
-  { title: 'MRI (private) *', icon: 'fa59d.svg', image: '3f753.png', wait: '8 – 18 weeks', cost: '$400 – $1,200 CAD' },
-  { title: 'CT Scan (private) *', icon: 'fa59d.svg', image: '119e9.png', wait: '4 – 12 weeks', cost: '$300 – $800 CAD' },
-  { title: 'Complete Health Screening', icon: '2d269.svg', image: '30d0f.png', wait: 'Limited availability', cost: '$2,500 – $5,000+ CAD' },
+  {
+    title: 'MRI (private) *', icon: 'fa59d.svg', image: '3f753.png', imageAlt: 'An MRI scanner and patient table', imageWidth: 1500, imageHeight: 1000,
+    home: {
+      CA: { wait: '8 – 18 weeks', cost: '$400 – $1,200 CAD' },
+      US: { wait: '1 – 4 weeks', cost: '$1,000 – $3,500 USD' },
+      UK: { wait: '6 – 18 weeks', cost: '£350 – £1,000 GBP' },
+    },
+  },
+  {
+    title: 'CT Scan (private) *', icon: 'fa59d.svg', image: 'ct-scan-suite.webp', imageAlt: 'A CT scanner and patient table in a warmly lit examination room', imageWidth: 1536, imageHeight: 1024,
+    home: {
+      CA: { wait: '4 – 12 weeks', cost: '$300 – $800 CAD' },
+      US: { wait: '1 – 3 weeks', cost: '$500 – $3,000 USD' },
+      UK: { wait: '4 – 10 weeks', cost: '£300 – £800 GBP' },
+    },
+  },
+  {
+    title: 'Complete Health Screening', icon: '2d269.svg', image: 'complete-health-screening.jpg', imageAlt: 'A sunlit healthcare room with a patient bed and comfortable seating', imageWidth: 1000, imageHeight: 600,
+    home: {
+      CA: { wait: 'Limited availability', cost: '$2,500 – $5,000+ CAD' },
+      US: { wait: '2 – 6 weeks', cost: '$3,000 – $10,000+ USD' },
+      UK: { wait: 'Limited availability', cost: '£1,500 – £4,000+ GBP' },
+    },
+  },
 ] as const
 
 export const processSteps = [
@@ -54,10 +78,10 @@ export const providers = [
 ] as const
 
 export const expectations = [
-  ['13c26.svg', 'Western-standard equipment', 'Modern MRI, CT, ultrasound and diagnostic systems.'],
-  ['1c73b.svg', 'Dedicated international departments', 'VIP and foreign-patient services.'],
-  ['ba4f6.svg', 'Experienced teams', 'Decades of experience serving international patients.'],
-  ['3ff93.svg', 'Streamlined patient journey', 'Registration, interpretation, imaging access and follow-up support.'],
+  ['13c26-brass.svg', 'Western-standard equipment', 'Modern MRI, CT, ultrasound and diagnostic systems.'],
+  ['1c73b-brass.svg', 'Dedicated international departments', 'VIP and foreign-patient services.'],
+  ['ba4f6-brass.svg', 'Experienced teams', 'Decades of experience serving international patients.'],
+  ['3ff93-brass.svg', 'Streamlined patient journey', 'Registration, interpretation, imaging access and follow-up support.'],
 ] as const
 
 export const questions = [
