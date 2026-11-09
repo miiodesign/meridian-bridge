@@ -30,7 +30,7 @@ export function CountrySelect({ country, onChange, label = 'Compare with:' }: {
     return () => document.removeEventListener('pointerdown', closeOutside)
   }, [open])
 
-  function openList(index = 0) {
+  function openList(index = -1) {
     setActive(index)
     setOpen(true)
   }
@@ -55,7 +55,7 @@ export function CountrySelect({ country, onChange, label = 'Compare with:' }: {
     const last = options.length - 1
     const next = {
       ArrowDown: Math.min(last, active + 1),
-      ArrowUp: Math.max(0, active - 1),
+      ArrowUp: active < 0 ? last : Math.max(0, active - 1),
       Home: 0,
       End: last,
     }[event.key]
@@ -64,7 +64,7 @@ export function CountrySelect({ country, onChange, label = 'Compare with:' }: {
       setActive(next)
     } else if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault()
-      choose(options[active].code)
+      if (active >= 0) choose(options[active].code)
     } else if (event.key === 'Escape') {
       event.preventDefault()
       close()
@@ -87,8 +87,8 @@ export function CountrySelect({ country, onChange, label = 'Compare with:' }: {
           </svg>
         </button>
         <ul ref={listRef} id={listId} className="mb-country-select-list" role="listbox" tabIndex={-1} hidden={!open}
-          aria-labelledby={labelId} aria-activedescendant={open ? `${id}-${options[active]?.code}` : undefined}
-          onKeyDown={handleListKey} onBlur={event => {
+          aria-labelledby={labelId} aria-activedescendant={open && active >= 0 ? `${id}-${options[active].code}` : undefined}
+          onKeyDown={handleListKey} onPointerLeave={() => setActive(-1)} onBlur={event => {
             if (!rootRef.current?.contains(event.relatedTarget)) setOpen(false)
           }}>
           {options.map(({ code }, index) => (

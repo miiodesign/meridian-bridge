@@ -21,7 +21,7 @@
     grid-template-rows: max-content;
     grid-auto-flow: column;
     grid-auto-columns: 86%;
-    align-items: start;
+    align-items: stretch;
     gap: 20px;
     max-width: 100%;
     margin: 0;

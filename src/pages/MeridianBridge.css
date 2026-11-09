@@ -109,12 +109,17 @@
 .mb-fee-price { display: grid; gap: 4px; color: var(--mb-jade); font-size: 14px; margin-bottom: 4px; }
 .mb-fee-price strong { font-size: 15px; font-weight: 600; }
 .mb-fee-toggle.button { display: flex; width: 100%; align-items: center; justify-content: center; gap: 6.41px; margin: 0; min-height: 27px; padding: 6.41px 10.256px 6.41px 13.461px; border: 0; border-radius: 2px; background: var(--mb-jade); color: var(--mb-ivory); font-size: 10.897px; font-weight: 600; line-height: 1.3; }
-.mb-fee-toggle.button:hover:not(:disabled), .mb-fee-toggle.button:focus-visible, .mb-fee-toggle.button[aria-expanded="true"] { background: var(--mb-ivory); color: var(--mb-jade); }
+.mb-fee-toggle.button:focus-visible, .mb-fee-toggle.button[aria-expanded="true"] { background: var(--mb-ivory); color: var(--mb-jade); }
 .mb-fee-toggle-icon { display: grid; align-items: center; justify-items: center; }
 .mb-fee-toggle-icon > span { grid-area: 1 / 1; }
 .mb-fee-icon-hover { opacity: 0; }
-.mb-fee-toggle:is(:hover, :focus-visible, [aria-expanded="true"]) .mb-fee-icon-hover { opacity: 1; }
-.mb-fee-toggle:is(:hover, :focus-visible, [aria-expanded="true"]) .mb-fee-icon-default { opacity: 0; }
+.mb-fee-toggle:is(:focus-visible, [aria-expanded="true"]) .mb-fee-icon-hover { opacity: 1; }
+.mb-fee-toggle:is(:focus-visible, [aria-expanded="true"]) .mb-fee-icon-default { opacity: 0; }
+@media (hover: hover) {
+  .mb-fee-toggle.button:hover:not(:disabled) { background: var(--mb-ivory); color: var(--mb-jade); }
+  .mb-fee-toggle:hover .mb-fee-icon-hover { opacity: 1; }
+  .mb-fee-toggle:hover .mb-fee-icon-default { opacity: 0; }
+}
 .mb-fee-card-content { min-height: 300px; }
 .mb-pricing-card .mb-travel-costs { border-top: 1px solid #daddd4; padding-top: 14px; margin-top: 14px; }
 .mb-facilitation-panel { display: flex; flex-direction: column; justify-content: center; gap: 27px; min-height: 389px; padding: 24px 32px 32px; border-radius: 3px; background: var(--mb-evergreen); color: var(--mb-ivory); }

@@ -1,8 +1,8 @@
 export const screeningPackages = [
   {
     id: 'essential',
-    title: 'Essential Screening',
-    price: '$300 USD',
+    title: 'Comprehensive',
+    price: '$270 USD',
     summary: 'A practical starting point for a broader view of your general health.',
     popular: false,
     checkIcon: '565d9.svg',
@@ -16,7 +16,7 @@ export const screeningPackages = [
   },
   {
     id: 'comprehensive',
-    title: 'Comprehensive Screening',
+    title: 'Enhanced',
     price: '$600 – $1,000 USD',
     summary: 'A more extensive view across multiple areas of health.',
     popular: true,
@@ -35,7 +35,7 @@ export const screeningPackages = [
     id: 'advanced',
     title: 'Advanced / Specialized',
     price: '$1,000+ USD',
-    summary: 'Comprehensive screening plus additional areas of focus.',
+    summary: 'Enhanced screening plus additional areas of focus.',
     popular: false,
     checkIcon: '69591.svg',
     inclusions: [

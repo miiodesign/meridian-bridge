@@ -23,8 +23,8 @@ export function MeridianBridgePage() {
         <WhyChina country={country} onCountryChange={setCountry} />
         <PatientContext />
         <HowItWorks />
-        <HealthScreening />
         <PricingSection country={country} onCountryChange={setCountry} />
+        <HealthScreening />
         <ProviderNetwork />
         <AboutAndQuestions />
       </main>

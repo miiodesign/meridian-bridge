@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Button } from '../ui/Button'
-import { ActionLink, Brand } from './Shared'
+import { ActionLink, Brand, Icon } from './Shared'
 import { asset, consultationUrl, inquiryUrl, navigation } from './design'
 import { BrandPattern } from './BrandPattern'
 import { useActiveSection } from './useActiveSection'
@@ -52,7 +52,7 @@ export function SiteHeader() {
             onClick={() => { selectSection(id); setMenuOpen(false) }}>{label}</a>
         ))}
         <a className="mb-mobile-consultation" href={consultationUrl} target="_blank" rel="noopener noreferrer"
-          onClick={() => setMenuOpen(false)}>Book a Free Consultation <span aria-hidden="true">↗</span></a>
+          onClick={() => setMenuOpen(false)}>Book a Free 20-Minute Consultation<Icon name="ee954.svg" /></a>
       </nav>
       <a className="mb-header-cta" href={consultationUrl} target="_blank" rel="noopener noreferrer">Book a Free 20-Minute Consultation</a>
     </header>
@@ -64,8 +64,8 @@ export function Hero() {
     <section className="mb-hero" aria-labelledby="meridian-title">
       <img className="mb-hero-image" src={asset('guangzhou-lounge.jpg')} alt="A sunlit lounge overlooking the Pearl River and Guangzhou skyline at golden hour" width="1920" height="640" fetchPriority="high" />
       <div className="mb-hero-copy">
-        <h1 id="meridian-title">Your health has<br />been waiting<br /><em>long enough.</em></h1>
-        <p>Access comprehensive health screenings and diagnostic testing in China, with Meridian Bridge handling the coordination from Canada.</p>
+        <h1 id="meridian-title">Be proactive about <em>your health.</em></h1>
+        <p>Access comprehensive health screenings and diagnostic testing in China, with Meridian Bridge helping you navigate the process.</p>
         <div className="mb-actions">
           <ActionLink>Book a Free 20-Minute Consultation</ActionLink>
           <ActionLink href={inquiryUrl} variant="mb-action-light" icon="8e1e6.svg">Send an Inquiry</ActionLink>
@@ -79,11 +79,11 @@ export function PatientContext() {
   return (
     <section className="mb-patient-context" aria-label="International patient context">
       <BrandPattern />
-      <img className="mb-context-image" src={asset('checkup-consultation.webp')} alt="A doctor taking a patient’s blood pressure in a consultation room overlooking Guangzhou" width="2000" height="667" loading="lazy" decoding="async" />
+      <img className="mb-context-image" src={asset('clinic-consultation.jpg')} alt="A doctor going over screening results with a patient in a bright consultation room" width="1540" height="1021" loading="lazy" decoding="async" />
       <div className="mb-context-stats">
         <div className="mb-metrics">
-          <div><strong>1.28 million</strong><p>international patient visits were recorded at China’s key foreign-facing hospitals in 2025.</p></div>
-          <div><strong>+73.6%</strong><p>in foreign visits to Chinese hospitals in three years.</p></div>
+          <div><strong>1.28 million</strong><p>Visits from international patients recorded in Chinese hospitals in 2025.</p></div>
+          <div><strong>+74%</strong><p>In foreign visits to Chinese hospitals in the last 3 years.</p></div>
         </div>
         <p className="mb-source">Source: National Health Commission of China, 2025.</p>
       </div>

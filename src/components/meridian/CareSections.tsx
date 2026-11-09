@@ -4,17 +4,30 @@ import { CountrySelect } from './CountrySelect'
 import { asset, comparisons, countries, expectations, processSteps, providers, screeningTests, type CountryCode } from './design'
 import { ScreeningPackages } from './ScreeningPackages'
 import { MobileCardRail } from './MobileCardRail'
-import { MeetGordon } from './FounderStory'
 
-function CountryCell({ home, wait, cost }: { home?: string; wait: string; cost: string }) {
+function ChinaCell({ wait, cost }: { wait: readonly string[]; cost: string }) {
   return (
-    <div className={`mb-country${home ? ' mb-country-home' : ''}`}>
-      <strong aria-live={home ? 'polite' : undefined}>{home ? `In ${home}` : 'In China'}</strong>
-      <p className="mb-country-label"><Icon name={home ? 'e69fe.svg' : '6b9ed.svg'} />Wait time</p>
-      <p>{wait}</p>
+    <div className="mb-country">
+      <strong>In China</strong>
+      <p className="mb-country-label"><Icon name="6b9ed.svg" />Wait time</p>
+      <p>{wait.map((line, index) => <span key={line}>{index > 0 && <br />}{line}</span>)}</p>
       <hr />
-      <p className="mb-country-label"><Icon name={home ? '11c05.svg' : '3436b.svg'} />Cost</p>
-      <p>{cost}</p>
+      <p className="mb-country-label"><Icon name="3436b.svg" />Cost</p>
+      <p aria-live="polite">{cost}</p>
+    </div>
+  )
+}
+
+function HomeCell({ home, options }: { home: string; options: readonly string[] }) {
+  return (
+    <div className="mb-country mb-country-home" aria-live="polite">
+      <strong>In {home}</strong>
+      {options.map((option, index) => (
+        <div key={option}>
+          {index > 0 && <p className="mb-country-or">OR</p>}
+          <p>{option}</p>
+        </div>
+      ))}
     </div>
   )
 }
@@ -25,7 +38,7 @@ export function WhyChina({ country, onCountryChange }: CountryProps) {
   const homeName = countries.find(({ code }) => code === country)?.name ?? 'Canada'
   return (
     <section id="why-china" className="mb-section mb-why">
-      <SectionHeading title="Why China is becoming the destination?" aside={<CountrySelect country={country} onChange={onCountryChange} label="Compare with:" />}>
+      <SectionHeading title="China is the new healthcare destination of the world." aside={<CountrySelect country={country} onChange={onCountryChange} label="Compare with:" />}>
         Shorter wait times, more accessible pricing, and access to comprehensive{'\u00a0'}screening.
       </SectionHeading>
       <MobileCardRail name="comparisons" className="mb-comparisons" label="Treatment comparisons">
@@ -34,8 +47,8 @@ export function WhyChina({ country, onCountryChange }: CountryProps) {
             <h3><Icon name={item.icon} />{item.title}</h3>
             <div className={`mb-comparison-body mb-comparison-${index}`}>
               <div className="mb-comparison-image"><img src={asset(item.image)} alt={item.imageAlt} width={item.imageWidth} height={item.imageHeight} loading="lazy" decoding="async" /></div>
-              <CountryCell wait="Typically 1 – 7 days" cost="From ~$100 USD (¥700+)" />
-              <CountryCell home={homeName} {...item.home[country]} />
+              <ChinaCell wait={item.china.wait} cost={item.china.cost[country]} />
+              <HomeCell home={homeName} options={item.home[country]} />
             </div>
           </article>
         ))}
@@ -78,10 +91,6 @@ export function HowItWorks() {
             <div className="mb-step-copy"><h3>{title}</h3><p>{text}</p></div>
           </article>
         ))}
-        <article className="mb-meet-gordon">
-          <img src={asset('gordon-zhang.jpeg')} alt="Gordon Zhang, founder of Meridian Bridge" width="800" height="800" loading="lazy" />
-          <div className="mb-step-copy"><MeetGordon question /></div>
-        </article>
       </div>
       <div className="mb-travel">
         <div>
@@ -90,7 +99,7 @@ export function HowItWorks() {
           <p>Many screening packages can be completed in a <strong>single morning,</strong> making it easy to include a full health check during a family visit, business trip or vacation.</p>
           <ActionLink href="#pricing" variant="mb-action-sand" icon="efa88.svg" onClick={showAlreadyGoingPricing}>Add a screening to your trip</ActionLink>
         </div>
-        <img src={asset('145ea.png')} alt="Traditional Chinese pavilion and gardens beside a lake" loading="lazy" />
+        <img src={asset('yong-qing-fang-aerial.webp')} alt="Aerial view of Yong Qing Fang's historic rooftops and canal in Guangzhou" width="1600" height="1067" loading="lazy" decoding="async" />
       </div>
     </section>
   )
@@ -99,12 +108,15 @@ export function HowItWorks() {
 export function HealthScreening() {
   return (
     <section id="screening" className="mb-section mb-screening">
-      <SectionHeading title="What is a complete health check?" />
+      <SectionHeading title="A clear picture of your health in one visit.">
+        Comprehensive health screenings bring multiple assessments, blood tests, and diagnostic imaging together into a single experience. You can establish a broader view of your health and take a proactive approach to monitoring it.
+      </SectionHeading>
       <div className="mb-screening-layout">
         <article className="mb-screening-card">
-          <h3>What can it include?</h3>
+          <h3>What it includes</h3>
           <p>Tests vary by provider and package, but can include (and are not limited to):</p>
           <ul>{screeningTests.map(([icon, text]) => <li key={text}><Icon name={icon} /><span>{text}</span></li>)}</ul>
+          <p className="mb-screening-addons">Specific tests can be requested as “add-ons” at any time.</p>
         </article>
         <ScreeningPackages />
       </div>
@@ -116,7 +128,7 @@ export function ProviderNetwork() {
   return (
     <section id="providers" className="mb-section mb-providers">
       <SectionHeading title="Our provider network">
-        A thoughtfully curated network of established hospitals and healthcare providers in Guangdong.
+        A thoughtfully curated network of established hospitals and healthcare providers in Guangdong, China.
       </SectionHeading>
       <div className="mb-provider-cards">
         {providers.map(([image, title, text]) => (

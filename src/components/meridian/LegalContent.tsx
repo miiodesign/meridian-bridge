@@ -26,7 +26,7 @@ export function TermsContent() {
       <h3>Provider services and decisions</h3>
       <p>Medical services are provided by the selected healthcare provider, not by this website. Provider acceptance, test requirements, interpretation, report timing, and language support vary. Confirm the arrangements with the provider before committing. Screening cannot detect every condition, and no particular result or outcome is guaranteed.</p>
       <h3>Quotes, fees, and travel</h3>
-      <p>Prices and waiting times shown here are illustrative and may change. CAD and USD figures are labeled separately and should not be added without currency conversion. Request a written quote and confirm inclusions, payment terms, and cancellation or refund conditions before booking. Travel entry requirements, insurance, and medical suitability for travel should be checked independently.</p>
+      <p>Prices and waiting times shown here are illustrative and may change. Figures are shown in the currency of the country you select. Request a written quote and confirm inclusions, payment terms, and cancellation or refund conditions before booking. Travel entry requirements, insurance, and medical suitability for travel should be checked independently.</p>
       <h3>Inquiries and third-party booking</h3>
       <p>Submitting a Tally inquiry or booking a free Calendly consultation does not confirm a medical appointment or commit you to a paid service. Third-party platforms and medical providers apply their own terms. Do not send sensitive health information through the general inquiry form.</p>
       <h3>Questions before booking</h3>
