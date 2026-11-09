@@ -6,55 +6,80 @@ export const siteUrl = 'https://meridianbridge.vercel.app/'
 export const navigation = [
   ['Why China', 'why-china'],
   ['How it Works', 'how-it-works'],
-  ["What's Included", 'screening'],
   ['Pricing', 'pricing'],
+  ["What's Included", 'screening'],
   ['Our Providers', 'providers'],
   ['About', 'about'],
   ['FAQ', 'faq'],
 ] as const
 
+// Trip-cost figures are shown in each visitor's home currency.
 export const countries = [
-  { code: 'CA', name: 'Canada', flights: '~$800 – $1,200 CAD', currency: 'CAD' },
-  { code: 'US', name: 'United States', flights: '~$700 – $1,300 USD', currency: 'USD' },
-  { code: 'UK', name: 'United Kingdom', flights: '~£550 – £950 GBP', currency: 'GBP' },
+  {
+    code: 'CA', name: 'Canada', currency: 'CAD', flightsFrom: 'Canada, estimated from YVR',
+    screeningPackage: 'From $300 CAD', fee: '$500 CAD', flights: '~$800 – $1,200 CAD',
+    accommodation: '$400 – $800 CAD', localCosts: '$150 – $450 CAD', alreadyGoingTotal: 'From $800 CAD',
+  },
+  {
+    code: 'US', name: 'United States', currency: 'USD', flightsFrom: 'US, estimated from LAX',
+    screeningPackage: 'From $270 USD', fee: '$400 USD', flights: '$700 – $1,100 USD',
+    accommodation: '~$300 – $600 USD', localCosts: '~$100 – $300 USD', alreadyGoingTotal: 'From $670 USD',
+  },
+  {
+    code: 'UK', name: 'United Kingdom', currency: 'GBP', flightsFrom: 'UK, estimated from LHR',
+    screeningPackage: 'From £270', fee: '£300', flights: '~£550 – £800',
+    accommodation: '~£225 – £450', localCosts: '~£75 – £225', alreadyGoingTotal: 'From £570',
+  },
 ] as const
 
 export type CountryCode = typeof countries[number]['code']
 
-// Placeholder home-country figures until verified prices are supplied.
+// Home-country options are listed in order and shown separated by “OR”.
 export const comparisons = [
   {
-    title: 'MRI (private) *', icon: 'fa59d.svg', image: '3f753.png', imageAlt: 'An MRI scanner and patient table', imageWidth: 1500, imageHeight: 1000,
+    title: 'MRI *', icon: 'fa59d.svg', image: '3f753.png', imageAlt: 'An MRI scanner and patient table', imageWidth: 1500, imageHeight: 1000,
+    china: {
+      wait: ['Same day available'],
+      cost: { CA: 'From ~$200 CAD', US: 'From ~$140 USD', UK: 'From £100' },
+    },
     home: {
-      CA: { wait: '8 – 18 weeks', cost: '$400 – $1,200 CAD' },
-      US: { wait: '1 – 4 weeks', cost: '$1,000 – $3,500 USD' },
-      UK: { wait: '6 – 18 weeks', cost: '£350 – £1,000 GBP' },
+      CA: ['30 week wait', '$1,000 – $1,500 (single scan)'],
+      US: ['National average is $1,325 USD, varies by scan area, insurance, and provider.'],
+      UK: ['6+ weeks', 'From £500 (single scan)'],
     },
   },
   {
-    title: 'CT Scan (private) *', icon: 'fa59d.svg', image: 'ct-scan-suite.webp', imageAlt: 'A CT scanner and patient table in a warmly lit examination room', imageWidth: 1536, imageHeight: 1024,
+    title: 'CT Scan *', icon: 'fa59d.svg', image: 'ct-scan-suite.webp', imageAlt: 'A CT scanner and patient table in a warmly lit examination room', imageWidth: 1536, imageHeight: 1024,
+    china: {
+      wait: ['Same day available'],
+      cost: { CA: 'From ~$150 CAD', US: 'From ~$100 USD', UK: 'From £80' },
+    },
     home: {
-      CA: { wait: '4 – 12 weeks', cost: '$300 – $800 CAD' },
-      US: { wait: '1 – 3 weeks', cost: '$500 – $3,000 USD' },
-      UK: { wait: '4 – 10 weeks', cost: '£300 – £800 GBP' },
+      CA: ['9 week wait', '$500+ (single scan)'],
+      US: ['Typically approximately $1,000 USD, varies by scan area, insurance, and provider.'],
+      UK: ['6+ weeks', 'From £400 (single scan)'],
     },
   },
   {
     title: 'Complete Health Screening', icon: '2d269.svg', image: 'complete-health-screening.jpg', imageAlt: 'A sunlit healthcare room with a patient bed and comfortable seating', imageWidth: 1000, imageHeight: 600,
+    china: {
+      wait: ['Same week available', 'By appointment'],
+      cost: { CA: 'From $350 CAD', US: 'From $270 USD', UK: 'From £200' },
+    },
     home: {
-      CA: { wait: 'Limited availability', cost: '$2,500 – $5,000+ CAD' },
-      US: { wait: '2 – 6 weeks', cost: '$3,000 – $10,000+ USD' },
-      UK: { wait: 'Limited availability', cost: '£1,500 – £4,000+ GBP' },
+      CA: ['Limited health screening for seniors. Not comprehensive.', '$2,000 – $5,000+ CAD'],
+      US: ['About $4,000 USD for comparable packages.'],
+      UK: ['Every 5 years if requested. Not comprehensive.', 'From £1,200+'],
     },
   },
 ] as const
 
 export const processSteps = [
   ['01', 'Start with a conversation', 'Tell us what you are looking for during a free consultation or through our inquiry form.'],
-  ['02', 'Receive tailored options', 'We identify suitable providers and packages based on your needs.'],
+  ['02', 'Receive tailored options', 'We identify suitable providers based on your needs and provide tailored package options.'],
   ['03', 'We coordinate the booking', 'We handle communication with the provider and appointment details.'],
   ['04', 'We prepare you for China', 'Practical guidance, payment preparation and on-trip support.'],
-  ['05', 'Receive your results', 'We help with report logistics and guidance for your own physician.'],
+  ['05', 'Complete your health screening', 'We help with logistics and report translations.'],
 ] as const
 
 export const screeningTests = [
@@ -67,7 +92,6 @@ export const screeningTests = [
   ['a7c4c.svg', 'Bone density'],
   ['e6860.svg', 'Female health specific tests'],
   ['6395f.svg', 'Thyroid, liver and kidney function'],
-  ['e3fa5.svg', 'Other package-specific tests'],
   ['3bb3d.svg', 'Blood testing, diabetes screening'],
 ] as const
 
@@ -78,9 +102,9 @@ export const providers = [
 ] as const
 
 export const expectations = [
-  ['13c26-brass.svg', 'Western-standard equipment', 'Modern MRI, CT, ultrasound and diagnostic systems.'],
-  ['1c73b-brass.svg', 'Dedicated international departments', 'VIP and foreign-patient services.'],
-  ['ba4f6-brass.svg', 'Experienced teams', 'Decades of experience serving international patients.'],
+  ['13c26-brass.svg', 'Western-standard equipment', 'Modern MRI, CT, Ultrasound, and diagnostic systems, from the same brands used in Western systems.'],
+  ['1c73b-brass.svg', 'Dedicated international departments', 'Specialized in foreign-patient services, with VIP options available.'],
+  ['ba4f6-brass.svg', 'Experienced medical professionals', 'Top level doctors in their respective fields with decades of experience serving international patients.'],
   ['3ff93-brass.svg', 'Streamlined patient journey', 'Registration, interpretation, imaging access and follow-up support.'],
 ] as const
 

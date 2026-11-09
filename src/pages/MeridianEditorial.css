@@ -377,3 +377,17 @@
 
 /* Avoid one-word last lines where the browser supports it */
 .meridian p { text-wrap: pretty; }
+
+/* Hero: headline and intro sit closer in size */
+.meridian .mb-hero h1 { font-size: clamp(42px, 4.4vw, 62px); line-height: 1.05; }
+.meridian .mb-hero-copy > p:not(.mb-eyebrow) { max-width: 480px; font-size: clamp(18px, 1.5vw, 21px); line-height: 1.5; }
+
+/* Comparison cards: home-country options separated by “OR” */
+.meridian .mb-country-home > div > p:not(.mb-country-or) { line-height: 1.45; }
+.meridian .mb-country-or { margin: 12px 0; color: var(--mb-muted); font-size: 11px; font-weight: 600; letter-spacing: .12em; }
+
+/* Health screening: add-ons note under the test list */
+.meridian .mb-screening-card > .mb-screening-addons { margin-top: 28px; color: var(--mb-jade); font-weight: 600; }
+
+/* Patient-context photo: keep both faces in frame */
+.meridian .mb-context-image { object-position: 40% 30%; }

@@ -53,8 +53,8 @@ export function ScreeningPackages() {
   return (
     <section className="mb-package-options" aria-labelledby={headingId}>
       <div className="mb-package-introduction">
-        <h3 id={headingId}>Screening package options</h3>
-        <p>Different providers offer different packages. Typical options include:</p>
+        <h3 id={headingId}>Health Screening Package Options</h3>
+        <p>Every provider offers different packages. Meridian Bridge helps you navigate which ones are best suited for your needs. Typical options price ranges include:</p>
       </div>
       <MobileCardRail name="packages" className="mb-package-grid" label="Screening packages">
         {screeningPackages.map(screeningPackage => <ScreeningPackageCard key={screeningPackage.id} screeningPackage={screeningPackage} />)}

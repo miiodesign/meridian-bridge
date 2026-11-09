@@ -79,6 +79,6 @@ Both “Send an Inquiry” buttons and the footer Contact link open the owner-su
 
 Tally manages submissions. This repository does not configure Tally notifications, forwarding, storage retention, or a Supabase sync. Those integrations must be configured and tested separately in the form owner's account. Do not interpret a reachable form as proof of successful notification delivery. Do not send test inquiries without authorization.
 
-Gordon's supplied biography and portrait are displayed in the founder dialog. FAQs describe coordination without promising specific medical outcomes or report deadlines. The pricing card is an illustrative breakdown, not an interactive estimator; CAD and USD costs are not combined into an unsupported total.
+Gordon's supplied biography and portrait are displayed in the founder dialog. FAQs describe coordination without promising specific medical outcomes or report deadlines. The pricing card is an illustrative breakdown, not an interactive estimator; amounts are shown in the selected country's currency (CAD, USD, or GBP).
 
 Privacy and Terms dialogs contain explicitly labeled drafts for owner review. Before publishing these changes to production, confirm the legal copy, business/privacy contact, data retention, and actual Tally integrations. No claims of regulatory compliance or specific data residency are made.

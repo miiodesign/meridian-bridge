@@ -19,7 +19,7 @@ export function AboutAndQuestions() {
       </div>
       <div id="about" className="mb-about">
         <SectionHeading title="About Meridian Bridge" />
-        <p>Meridian Bridge was founded to help English-speaking clients access high-quality health screening and diagnostic testing in China with more clarity, confidence and support. Based in Canada, we understand both cultures and work closely with trusted providers in Guangdong.</p>
+        <p>Meridian Bridge was founded to help English-speaking clients access high quality comprehensive health and diagnostic screenings in China with clarity, confidence, and support throughout the process. Based in Canada, we understand both Western standards and Chinese processes, and work closely with trusted providers to offer high quality experience for foreign visitors.</p>
         <div className="mb-meet-gordon"><MeetGordon /></div>
       </div>
     </section>
