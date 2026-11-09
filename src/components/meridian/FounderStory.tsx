@@ -20,7 +20,7 @@ export function MeetGordon({ question = false }: { question?: boolean }) {
       <h3>Meet Gordon</h3>
       <ContentDialog title="Gordon, the Founder" label="Read Gordon’s story" icon="e1e40.svg">
         <FounderStory />
-        <ActionLink>Book a Free Consultation</ActionLink>
+        <ActionLink>Book a Free 20-Minute Consultation</ActionLink>
       </ContentDialog>
     </>
   )

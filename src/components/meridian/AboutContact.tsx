@@ -31,9 +31,8 @@ export function ContactSection() {
     <section id="inquiry" className="mb-contact">
       <div className="mb-contact-copy">
         <h2>Ready to explore your options?</h2>
-        <p>Book a free 20-minute consultation, or send us what you’re looking for.</p>
         <div className="mb-actions">
-          <ActionLink variant="mb-action-inverse">Book a Free Consultation</ActionLink>
+          <ActionLink variant="mb-action-inverse">Book a Free 20-Minute Consultation</ActionLink>
           <ActionLink href={inquiryUrl} variant="mb-action-inverse">Send an Inquiry</ActionLink>
         </div>
         <p className="mb-inquiry-note">The inquiry form opens on Tally in a new tab. Please do not include medical records or sensitive health information.</p>

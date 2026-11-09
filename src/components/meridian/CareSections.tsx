@@ -2,7 +2,7 @@ import type { MouseEvent } from 'react'
 import { ActionLink, FeatureGrid, Icon, SectionHeading } from './Shared'
 import { CountrySelect } from './CountrySelect'
 import { asset, comparisons, countries, expectations, processSteps, providers, screeningTests, type CountryCode } from './design'
-import { ScreeningPackages } from './ScreeningPackages'
+import { PackageNote, ScreeningPackages } from './ScreeningPackages'
 import { MobileCardRail } from './MobileCardRail'
 
 function ChinaCell({ wait, cost }: { wait: readonly string[]; cost: string }) {
@@ -112,12 +112,15 @@ export function HealthScreening() {
         Comprehensive health screenings bring multiple assessments, blood tests, and diagnostic imaging together into a single experience. You can establish a broader view of your health and take a proactive approach to monitoring it.
       </SectionHeading>
       <div className="mb-screening-layout">
-        <article className="mb-screening-card">
-          <h3>What it includes</h3>
-          <p>Tests vary by provider and package, but can include (and are not limited to):</p>
-          <ul>{screeningTests.map(([icon, text]) => <li key={text}><Icon name={icon} /><span>{text}</span></li>)}</ul>
-          <p className="mb-screening-addons">Specific tests can be requested as “add-ons” at any time.</p>
-        </article>
+        <div className="mb-screening-aside">
+          <article className="mb-screening-card">
+            <h3>What it includes</h3>
+            <p>Tests vary by provider and package, but can include (and are not limited to):</p>
+            <ul>{screeningTests.map(([icon, text]) => <li key={text}><Icon name={icon} /><span>{text}</span></li>)}</ul>
+            <p className="mb-screening-addons">Specific tests can be requested as “add-ons” at any time.</p>
+          </article>
+          <PackageNote />
+        </div>
         <ScreeningPackages />
       </div>
     </section>

@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react'
 import { countries, type CountryCode } from './design'
+import { Flag } from './Flag'
 
 const optionLabel = (code: CountryCode) => `(${code}) ${countries.find(country => country.code === code)?.name ?? ''}`
 
@@ -81,7 +82,7 @@ export function CountrySelect({ country, onChange, label = 'Compare with:' }: {
           aria-haspopup="listbox" aria-expanded={open} aria-controls={listId}
           aria-labelledby={`${labelId} ${id}-value`}
           onClick={() => (open ? setOpen(false) : openList())} onKeyDown={handleButtonKey}>
-          <span id={`${id}-value`}>{optionLabel(country)}</span>
+          <span className="mb-country-option"><Flag code={country} /><span id={`${id}-value`}>{optionLabel(country)}</span></span>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
             <path d="M3 5.25L7 9.25L11 5.25" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
@@ -95,7 +96,7 @@ export function CountrySelect({ country, onChange, label = 'Compare with:' }: {
             <li key={code} id={`${id}-${code}`} role="option" aria-selected={false}
               className={index === active ? 'is-active' : undefined}
               onPointerEnter={() => setActive(index)} onClick={() => choose(code)}>
-              {optionLabel(code)}
+              <span className="mb-country-option"><Flag code={code} />{optionLabel(code)}</span>
             </li>
           ))}
         </ul>

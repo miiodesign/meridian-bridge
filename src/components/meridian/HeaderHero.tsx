@@ -64,7 +64,7 @@ export function Hero() {
     <section className="mb-hero" aria-labelledby="meridian-title">
       <img className="mb-hero-image" src={asset('guangzhou-lounge.jpg')} alt="A sunlit lounge overlooking the Pearl River and Guangzhou skyline at golden hour" width="1920" height="640" fetchPriority="high" />
       <div className="mb-hero-copy">
-        <h1 id="meridian-title">Be proactive about <em>your health.</em></h1>
+        <h1 id="meridian-title">Be proactive about <em className="mb-keep-together">your health.</em></h1>
         <p>Access comprehensive health screenings and diagnostic testing in China, with Meridian Bridge helping you navigate the process.</p>
         <div className="mb-actions">
           <ActionLink>Book a Free 20-Minute Consultation</ActionLink>

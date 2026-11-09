@@ -391,3 +391,39 @@
 
 /* Patient-context photo: keep both faces in frame */
 .meridian .mb-context-image { object-position: 40% 30%; }
+
+/* Keep “your health.” on one line; it wraps as a unit */
+.meridian .mb-keep-together { white-space: nowrap; }
+
+/* Section headings and subtitles use the full width so short ones stay on one line */
+.meridian .mb-section-heading { max-width: none; }
+.meridian .mb-section-heading > p:not(.mb-eyebrow) { max-width: none; }
+.meridian .mb-pricing .mb-section-heading { max-width: 460px; }
+
+/* Patient context: photo fades to solid evergreen, then the pattern fades in */
+.meridian .mb-context-image { mask-image: linear-gradient(90deg, #000 0%, #000 50%, rgba(0, 0, 0, .82) 64%, rgba(0, 0, 0, .5) 77%, rgba(0, 0, 0, .2) 89%, transparent 100%); }
+.meridian .mb-patient-context > .mb-brand-pattern { mask-image: linear-gradient(90deg, transparent 0%, transparent 52%, rgba(0, 0, 0, .35) 66%, #000 86%); }
+@media (max-width: 760px) {
+  .meridian .mb-context-image { mask-image: linear-gradient(180deg, #000 0%, #000 45%, rgba(0, 0, 0, .6) 70%, rgba(0, 0, 0, .2) 88%, transparent 100%); }
+  .meridian .mb-patient-context > .mb-brand-pattern { mask-image: linear-gradient(180deg, transparent 0, transparent 230px, rgba(0, 0, 0, .35) 320px, #000 440px); }
+}
+
+/* Country selects: flag beside each country name */
+.meridian .mb-country-option { display: inline-flex; align-items: center; gap: 10px; min-width: 0; }
+.meridian .mb-country-option > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.meridian .mb-flag { flex-shrink: 0; width: auto; height: 14px; box-shadow: 0 0 0 1px rgba(38, 35, 27, .18); }
+
+/* Founder dialog heading takes focus on open; no focus ring needed for it */
+.meridian .mb-dialog h2:focus { outline: none; }
+
+/* Footer heading in warm stone */
+.meridian .mb-contact h2 { color: var(--mb-sand); }
+
+/* Packages note now sits under “What it includes” */
+.meridian .mb-screening-aside { display: grid; gap: 20px; min-width: 0; }
+.meridian .mb-screening-aside > .mb-package-note { margin-top: 0; }
+
+/* Desktop packages: equal-height cards that expand together with one button */
+.meridian .mb-package-options-shared .mb-package-grid { align-items: stretch; }
+.meridian .mb-package-options-shared .mb-screening-package { min-height: 0; }
+.meridian .mb-package-options .mb-package-toggle-all.button { display: flex; width: fit-content; min-width: 180px; margin: 28px auto 0; }

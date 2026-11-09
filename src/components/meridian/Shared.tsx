@@ -48,11 +48,19 @@ export function SectionHeading({ title, children, aside }: {
 export function ContentDialog({ title, label, children, icon }: { title: string; label: string; children: ReactNode; icon?: string }) {
   const ref = useRef<HTMLDialogElement>(null)
   const titleId = useId()
+  function open() {
+    const dialog = ref.current
+    if (!dialog) return
+    dialog.showModal()
+    // showModal() focuses the first link, which is at the bottom; start at the top instead.
+    dialog.querySelector<HTMLElement>('h2')?.focus({ preventScroll: true })
+    dialog.scrollTop = 0
+  }
   return (
     <>
-      <Button className="mb-outline-button" onClick={() => ref.current?.showModal()}>{label}{icon && <Icon name={icon} />}</Button>
+      <Button className="mb-outline-button" onClick={open}>{label}{icon && <Icon name={icon} />}</Button>
       <dialog className="mb-dialog" ref={ref} aria-labelledby={titleId}>
-        <h2 id={titleId}>{title}</h2>
+        <h2 id={titleId} tabIndex={-1}>{title}</h2>
         <div>{children}</div>
         <Button className="mb-outline-button" onClick={() => ref.current?.close()}>Close</Button>
       </dialog>
