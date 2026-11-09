@@ -75,6 +75,50 @@ export function Hero() {
   )
 }
 
+const easeInOutCubic = (t: number) => (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2)
+
+// Counts up from zero the first time the number scrolls into view, easing in and out.
+function CountUp({ to, decimals = 0, prefix = '', suffix = '', duration = 2000 }: {
+  to: number
+  decimals?: number
+  prefix?: string
+  suffix?: string
+  duration?: number
+}) {
+  const ref = useRef<HTMLElement>(null)
+  const [value, setValue] = useState(() =>
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches ? to : 0)
+
+  useEffect(() => {
+    const element = ref.current
+    if (!element || value === to) return
+    let frame = 0
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return
+      observer.disconnect()
+      const start = performance.now()
+      const tick = (now: number) => {
+        const progress = Math.min(1, (now - start) / duration)
+        setValue(to * easeInOutCubic(progress))
+        if (progress < 1) frame = requestAnimationFrame(tick)
+      }
+      frame = requestAnimationFrame(tick)
+    }, { threshold: .6 })
+    observer.observe(element)
+    return () => { observer.disconnect(); cancelAnimationFrame(frame) }
+    // Runs once on mount; the animation drives `value` afterwards.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [to, duration])
+
+  const final = `${prefix}${to.toFixed(decimals)}${suffix}`
+  return (
+    <strong ref={ref} className="mb-count-up">
+      <span aria-hidden="true">{prefix}{value.toFixed(decimals)}{suffix}</span>
+      <span className="mb-visually-hidden">{final}</span>
+    </strong>
+  )
+}
+
 export function PatientContext() {
   return (
     <section className="mb-patient-context" aria-label="International patient context">
@@ -82,8 +126,8 @@ export function PatientContext() {
       <img className="mb-context-image" src={asset('clinic-consultation.jpg')} alt="A doctor going over screening results with a patient in a bright consultation room" width="1540" height="1021" loading="lazy" decoding="async" />
       <div className="mb-context-stats">
         <div className="mb-metrics">
-          <div><strong>1.28 million</strong><p>Visits from international patients recorded in Chinese hospitals in 2025.</p></div>
-          <div><strong>+74%</strong><p>In foreign visits to Chinese hospitals in the last 3 years.</p></div>
+          <div><CountUp to={1.28} decimals={2} suffix=" million" /><p>Visits from international patients recorded in Chinese hospitals in 2025.</p></div>
+          <div><CountUp to={74} prefix="+" suffix="%" /><p>In foreign visits to Chinese hospitals in the last 3 years.</p></div>
         </div>
         <p className="mb-source">Source: National Health Commission of China, 2025.</p>
       </div>

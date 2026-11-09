@@ -102,10 +102,10 @@ export const providers = [
 ] as const
 
 export const expectations = [
-  ['13c26-brass.svg', 'Western-standard equipment', 'Modern MRI, CT, Ultrasound, and diagnostic systems, from the same brands used in Western systems.'],
-  ['1c73b-brass.svg', 'Dedicated international departments', 'Specialized in foreign-patient services, with VIP options available.'],
-  ['ba4f6-brass.svg', 'Experienced medical professionals', 'Top level doctors in their respective fields with decades of experience serving international patients.'],
-  ['3ff93-brass.svg', 'Streamlined patient journey', 'Registration, interpretation, imaging access and follow-up support.'],
+  ['13c26.svg', 'Western-standard equipment', 'Modern MRI, CT, Ultrasound, and diagnostic systems, from the same brands used in Western systems.'],
+  ['1c73b.svg', 'Dedicated international departments', 'Specialized in foreign-patient services, with VIP options available.'],
+  ['ba4f6.svg', 'Experienced medical professionals', 'Top level doctors in their respective fields with decades of experience serving international patients.'],
+  ['3ff93.svg', 'Streamlined patient journey', 'Registration, interpretation, imaging access and follow-up support.'],
 ] as const
 
 export const questions = [
