@@ -427,3 +427,28 @@
 .meridian .mb-package-options-shared .mb-package-grid { align-items: stretch; }
 .meridian .mb-package-options-shared .mb-screening-package { min-height: 0; }
 .meridian .mb-package-options .mb-package-toggle-all.button { display: flex; width: fit-content; min-width: 180px; margin: 28px auto 0; }
+
+/* Screen-reader-only text */
+.meridian .mb-visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* Stats count up; tabular digits keep the width steady while counting */
+.meridian .mb-count-up { display: block; font-variant-numeric: tabular-nums; }
+
+/* Package options sit in the same pale box as “What it includes” */
+.meridian .mb-screening-layout > .mb-package-options { padding: 28px; border-radius: 4px; background: var(--mb-pale); }
+.meridian .mb-screening-layout > .mb-package-options .mb-package-introduction { margin-top: 0; }
+@media (max-width: 760px) {
+  .meridian .mb-screening-layout > .mb-package-options { padding: 24px; }
+}
+
+/* Comparison cards: all three end at the same height */
+.meridian .mb-comparisons > article { display: flex; flex-direction: column; }
+.meridian .mb-comparisons .mb-comparison-body { flex: 1; grid-template-rows: auto 1fr; }
+
+/* Provider network on ink; “What you can expect” inverted to an ivory panel */
+.meridian .mb-providers { background: var(--mb-ink); color: var(--mb-ivory); }
+.meridian .mb-providers .mb-section-heading h2, .meridian .mb-provider-cards h3 { color: var(--mb-ivory); }
+.meridian .mb-providers .mb-section-heading > p, .meridian .mb-provider-cards p { color: var(--mb-sand); }
+.meridian .mb-providers .mb-expectations { background: var(--mb-ivory); color: var(--mb-ink); }
+.meridian .mb-providers .mb-expectations > h3, .meridian .mb-providers .mb-expectations .mb-feature-grid h3 { color: var(--mb-ink); }
+.meridian .mb-providers .mb-expectations .mb-feature-grid p { color: var(--mb-muted); }
