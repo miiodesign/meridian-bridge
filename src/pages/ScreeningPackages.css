@@ -13,7 +13,7 @@
   gap: 48px;
   margin-top: 48px;
 }
-.meridian .mb-screening-layout > .mb-screening-card {
+.meridian .mb-screening-aside > .mb-screening-card {
   width: auto;
   min-width: 0;
   margin: 0;
@@ -81,7 +81,7 @@
 }
 @media (max-width: 760px) {
   .meridian .mb-screening-layout { margin-top: 32px; gap: 36px; }
-  .meridian .mb-screening-layout > .mb-screening-card { padding: 24px; }
+  .meridian .mb-screening-aside > .mb-screening-card { padding: 24px; }
   .meridian .mb-package-grid { grid-template-columns: 1fr; gap: 24px; }
   .meridian .mb-screening-package { min-height: 0; padding: 28px; gap: 20px; }
   .meridian .mb-package-overview h4, .meridian .mb-package-price, .meridian .mb-package-summary { min-height: 0; }
