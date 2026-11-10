@@ -452,3 +452,11 @@
 .meridian .mb-providers .mb-expectations { background: var(--mb-ivory); color: var(--mb-ink); }
 .meridian .mb-providers .mb-expectations > h3, .meridian .mb-providers .mb-expectations .mb-feature-grid h3 { color: var(--mb-ink); }
 .meridian .mb-providers .mb-expectations .mb-feature-grid p { color: var(--mb-muted); }
+
+/* Package details: “<tier>, plus:” lead-in above the list */
+.meridian .mb-package-details > .mb-package-builds { margin: 0 0 -10px; color: var(--mb-evergreen); font-size: 14px; font-weight: 600; }
+
+/* “Looking for a specific scan?” note at the foot of the packages box */
+.meridian .mb-specific-scan { margin-top: 28px; padding: 18px 20px; border-radius: 4px; background: var(--mb-paper); }
+.meridian .mb-specific-scan h4 { display: flex; align-items: center; gap: 10px; margin: 0 0 6px; color: var(--mb-evergreen); font: 600 15px/1.4 'Source Sans Pro', sans-serif; }
+.meridian .mb-specific-scan p { color: var(--mb-muted); font-size: 14px; line-height: 1.6; }
