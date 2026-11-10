@@ -50,12 +50,12 @@ function ScreeningPackageCard({ screeningPackage, baseId, mobile, allExpanded }:
         <p className="mb-package-summary">{screeningPackage.summary}</p>
       </div>
       <div className="mb-package-details" id={detailsElementId} hidden={!expanded}>
+        {screeningPackage.builds && <p className="mb-package-builds">{screeningPackage.builds}, plus:</p>}
         <ul>
           {screeningPackage.inclusions.map(inclusion => (
             <li key={inclusion}><Icon name={screeningPackage.checkIcon} /><span>{inclusion}</span></li>
           ))}
         </ul>
-        <p>{screeningPackage.description}</p>
       </div>
       {mobile && (
         <Button
@@ -102,6 +102,10 @@ export function ScreeningPackages() {
           {allExpanded ? 'Read less' : 'Read more'}
         </Button>
       )}
+      <aside className="mb-specific-scan" aria-labelledby={`${baseId}-specific-scan`}>
+        <h4 id={`${baseId}-specific-scan`}><Icon name="074ae.svg" />Looking for a specific scan?</h4>
+        <p>MRI, CT and other diagnostic imaging may be available as standalone tests or additions to selected packages, subject to provider availability and clinical assessment.</p>
+      </aside>
     </section>
   )
 }
