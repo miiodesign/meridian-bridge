@@ -1,5 +1,5 @@
 export const asset = (name: string) => `${import.meta.env.BASE_URL}meridian/${name}`
-export const consultationUrl = 'https://calendly.com/gordon-meridianbridge/15min-consultation'
+export const consultationUrl = 'https://calendly.com/gordon-meridianbridge/20min-consultation'
 export const inquiryUrl = 'https://tally.so/r/7Rpe72'
 export const siteUrl = 'https://meridianbridge.vercel.app/'
 
